@@ -83,8 +83,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caclulations\CalculateSpline.cs" />
+    <Compile Include="Caclulations\InitCoefficients.cs" />
     <Compile Include="Caclulations\InitMatrix.cs" />
-    <Compile Include="Caclulations\InitializateParameters.cs" />
+    <Compile Include="Caclulations\MatrixCalculation.cs" />
+    <Compile Include="Caclulations\FormVector.cs" />
     <Compile Include="Design\FormDesigner.cs">
       <SubType>Form</SubType>
     </Compile>
