@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -38,68 +39,90 @@ namespace MathematicalPackage_Smoothing.FileHelper
             double[] x = (double[])matrixInputData[0];
             double[] p = (double[])matrixInputData[1];
             double a = (double)matrixInputData[2];
+            var step = matrixInputData.Count + 2;
 
-            worksheet.Cells[1, 1] = "Input data";
-            worksheet.Cells[2, 1] = "N";
-            worksheet.Cells[2, 2] = "x";
-            worksheet.Cells[2, 3] = "p";
-            worksheet.Cells[2, 4] = "a";
-            worksheet.Cells[3, 4] = a;
+            worksheet.Cells[1, 1] = "N";
+            worksheet.Cells[1, 2] = "x";
+            worksheet.Cells[1, 3] = "p";
+            worksheet.Cells[1, 4] = "a";
+            worksheet.Cells[2, 4] = a;
+
+            worksheet.Cells[1, step] = "Matrix (N-2 х N-2)";
+            worksheet.Cells[2, step] = "MatrixSize " + maxSize;
+
+            worksheet.Cells[1, step + 1] = "0";
 
             for (int i = 0; i < maxSize + 2; i++)
             {
                 for (int j = 0; j < matrixInputData.Count; j++)
                 {
-                    worksheet.Cells[i + 1 + 2, ++j] = i + 1;
-                    worksheet.Cells[i + 1 + 2, ++j] = x[i];
-                    worksheet.Cells[i + 1 + 2, ++j] = p[i];
+                    worksheet.Cells[i + 2, ++j] = i + 1;
+                    worksheet.Cells[i + 2, ++j] = x[i];
+                    worksheet.Cells[i + 2, ++j] = p[i];
                 }
             }
 
+            for (int i = 1; i < maxSize + 1; i++)
+            {
+                worksheet.Cells[1, step + i + 1] = i;
+            }
+            for (int i = 1; i < maxSize + 1; i++)
+            {
+                worksheet.Cells[i + 1, step + 1] = i;
+            }
 
-            var step = matrixInputData.Count + 3;
-            worksheet.Cells[1, step] = "Matrix (N-2 х N-2)";
-            worksheet.Cells[2, step] = "MatrixSize " + maxSize;
             for (int i = 0; i < maxSize; i++)
             {
                 for (int j = 0; j < maxSize; j++)
                 {
-                    worksheet.Cells[i + 1 + 2, j + step] = matrix[i, j];
+                    worksheet.Cells[i + 1 + 1, j + step + 2] = matrix[i, j];
                 }
             }
             m_Workbook.Save();
             MessageBox.Show("Успешно сохранено!");
         }
 
-        public double[,] PullOutMatrix(double[,] matrix)
+        public System.Windows.Forms.DataGridView OpenTable(System.Windows.Forms.DataGridView dataGridView)
         {
-            try
+            Excel.Worksheet worksheet = (Excel.Worksheet)m_Excel.Sheets.get_Item(1);
+            Excel.Range ExcelRange;
+            ExcelRange = worksheet.UsedRange;
+            DataTable dt = new DataTable();
+            for (int Cnum = 1; Cnum <= ExcelRange.Columns.Count; Cnum++)
             {
-                Excel.Worksheet worksheet = (Excel.Worksheet)m_Excel.ActiveSheet;
-                int matrixSize;
-                string matrixSizeExcel = worksheet.Cells[2, 6].Text.ToString();
-                if (!int.TryParse(string.Join("", matrixSizeExcel.Where(c => char.IsDigit(c))), out matrixSize))
+                try
                 {
-                    return matrix;
-                };
-
-                matrix = new double[matrixSize, matrixSize];
-
-                for (int i = 0; i < matrixSize; i++)
+                    dt.Columns.Add(
+                        new DataColumn((ExcelRange.Cells[1, Cnum] as Excel.Range).Value2.ToString()));
+                }
+                catch (Exception)
                 {
-                    for (int j = 0; j < matrixSize; j++)
-                    {
-                        string x = worksheet.Cells[i + 3, j + 6].Text.ToString();
-                        matrix[i, j] = Convert.ToDouble(x);
-                    }
+
+                    dt.Columns.Add("");
                 }
             }
-            catch (Exception)
+
+            for (int Rnum = 2; Rnum <= ExcelRange.Rows.Count; Rnum++)
             {
-                MessageBox.Show("Не получается правильно обнаружить данные");
+                DataRow dr = dt.NewRow();
+                for (int Cnum = 1; Cnum <= ExcelRange.Columns.Count; Cnum++)
+                {
+                    try
+                    {
+                        dr[Cnum - 1] =
+                        (ExcelRange.Cells[Rnum, Cnum] as Excel.Range).Value2.ToString();
+                    }
+                    catch (Exception)
+                    {
+                        dr[Cnum - 1] = " ";
+                    }
+                    
+                }
+                dt.Rows.Add(dr);
+                dt.AcceptChanges();
             }
-            MessageBox.Show("Матрица взята!");
-            return matrix;
+            dataGridView.DataSource = dt;
+            return dataGridView;
         }
 
         public void Dispose()

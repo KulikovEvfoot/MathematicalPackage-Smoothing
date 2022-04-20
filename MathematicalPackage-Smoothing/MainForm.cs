@@ -53,6 +53,7 @@ namespace MathematicalPackage_Smoothing
                     if (excelConnector.OpenExcelFile(windowOpener.filePath))
                     {
                         excelConnector.SaveMatrix(initMatrix.matrixInputData, initMatrix.matrix);
+                        dataGridView1 = excelConnector.OpenTable(dataGridView1);
                     }
                 }
             }
@@ -99,9 +100,6 @@ namespace MathematicalPackage_Smoothing
                 }
             };
 
-
-
-
             string s = "";
             for (int i = 0; i < spline.Length; i++)
             {
@@ -110,9 +108,8 @@ namespace MathematicalPackage_Smoothing
             MessageBox.Show(s);
         }
 
-        private void ChooseMatrixButton_Click(object sender, EventArgs e)
+        private void materialButton1_Click(object sender, EventArgs e)
         {
-            InitMatrix initMatrix = new InitMatrix();
             WindowOpener windowOpener = new WindowOpener();
             if (windowOpener.filePath != null)
             {
@@ -120,7 +117,7 @@ namespace MathematicalPackage_Smoothing
                 {
                     if (excelConnector.OpenExcelFile(windowOpener.filePath))
                     {
-                        initMatrix.matrix = excelConnector.PullOutMatrix(initMatrix.matrix);
+                        dataGridView1 = excelConnector.OpenTable(dataGridView1);
                     }
                 }
             }
