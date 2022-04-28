@@ -32,13 +32,13 @@ namespace MathematicalPackage_Smoothing.FileHelper
             return false;
         }
 
-        public void SaveMatrix(List<object> matrixInputData, double[,] matrix)
+        public void SaveMatrix(List<object> matrixInputData, float[,] matrix)
         {
             Excel.Worksheet worksheet = (Excel.Worksheet)m_Excel.ActiveSheet;
-            double maxSize = Math.Sqrt(matrix.Length);
-            double[] x = (double[])matrixInputData[0];
-            double[] p = (double[])matrixInputData[1];
-            double a = (double)matrixInputData[2];
+            float maxSize = (float)Math.Sqrt(matrix.Length);
+            float[] x = (float[])matrixInputData[0];
+            float[] p = (float[])matrixInputData[1];
+            float a = (float)matrixInputData[2];
             var step = matrixInputData.Count + 2;
 
             worksheet.Cells[1, 1] = "N";
@@ -107,15 +107,18 @@ namespace MathematicalPackage_Smoothing.FileHelper
                 DataRow dr = dt.NewRow();
                 for (int Cnum = 1; Cnum <= ExcelRange.Columns.Count; Cnum++)
                 {
-                    try
-                    {
-                        dr[Cnum - 1] =
+
+                    dr[Cnum - 1] =
                         (ExcelRange.Cells[Rnum, Cnum] as Excel.Range).Value2.ToString();
-                    }
-                    catch (Exception)
-                    {
-                        dr[Cnum - 1] = " ";
-                    }
+
+                    //try
+                    //{
+                        
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    dr[Cnum - 1] = " ";
+                    //}
                     
                 }
                 dt.Rows.Add(dr);
@@ -123,6 +126,31 @@ namespace MathematicalPackage_Smoothing.FileHelper
             }
             dataGridView.DataSource = dt;
             return dataGridView;
+        }
+
+        public float[] InitVectrorFFromExcel(float[] f)
+        {
+            try
+            {
+                Excel.Worksheet worksheet = (Excel.Worksheet)m_Excel.ActiveSheet;
+                int vectorSize = f.Length;
+
+                for (int i = 0; i < vectorSize; i++)
+                {
+                    string value = worksheet.Cells[i + 2, 3].Text.ToString();
+                    if (value == "")
+                    {
+                        value = "0";
+                    }
+                    f[i] = Convert.ToSingle(value);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Не получается правильно обнаружить данные");
+            }
+            MessageBox.Show("Вектор взят!");
+            return f;
         }
 
         public void Dispose()

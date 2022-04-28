@@ -4,62 +4,52 @@ namespace MathematicalPackage_Smoothing.Caclulations
 {
     public class InitMatrix : MatrixCalculation
     {
-        public double[,] matrix;
+        public float[,] matrix;
         public List<object> matrixInputData = new List<object>();
-        public readonly double[] m_H;
-        public readonly double[] m_X;
-        public readonly double[] m_P;
-        public readonly double[] m_Lambda;
-        //private double m_FirstMu;
-        //private double m_LastMu;
-        public readonly double[] m_Mu;
-        public readonly double[] m_Beta;
+        public readonly float[] h;
+        public readonly float[] m_X;
+        public readonly float[] p;
 
-        public InitMatrix()
-        {
-
-        }
-
-        public InitMatrix(int n, double a)
+        public InitMatrix(int n, float x, float a)
         {
             this.n = n;
             this.a = a;
-            m_H = new double[n];
-            m_X = new double[n];
-            m_P = new double[n];
-            m_Mu = new double[n];
-            m_Lambda = new double[n];
-            m_Beta = new double[n];
-            matrix = new double[n - 2, n - 2];
+            h = new float[n];
+            m_X = new float[n];
+            p = new float[n];
+            m_Mu = new float[n];
+            m_Lambda = new float[n];
+            m_Beta = new float[n];
+            matrix = new float[n - 2, n - 2];
 
             for (int i = 0; i < n; i++)
             {
-                m_X[i] = InitX(i);
+                m_X[i] = InitX(x ,i);
             }
 
             for (int i = 0; i < n; i++)
             {
-                m_P[i] = InitP();
+                p[i] = InitP();
             }
 
             for (int i = 0; i < n - 1; i++)
             {
-                m_H[i] = InitH(m_X[i], m_X[i + 1]);
+                h[i] = InitH(m_X[i], m_X[i + 1]);
             }
 
             for (int i = 1; i < n - 1; i++)
             {
-                m_Lambda[i] = InitLambda(m_H[i - 1], m_H[i], a, m_P[i - 1], m_P[i], m_P[i + 1]);
+                m_Lambda[i] = InitLambda(h[i - 1], h[i], a, p[i - 1], p[i], p[i + 1]);
             }
 
             for (int i = 1; i < n - 2; i++)
             {
-                m_Mu[i] = InitMu(m_H[i], a, m_P[i], m_H[i - 1], m_P[i + 1], m_H[i + 1]);
+                m_Mu[i] = InitMu(h[i], a, p[i], h[i - 1], p[i + 1], h[i + 1]);
             }
 
             for (int i = 1; i < n - 2; i++)
             {
-                m_Beta[i] = InitBeta(a, m_P[i + 1], m_H[i], m_H[i + 1]);
+                m_Beta[i] = InitBeta(a, p[i + 1], h[i], h[i + 1]);
             }
 
             /// нигде не используются ///
@@ -76,14 +66,17 @@ namespace MathematicalPackage_Smoothing.Caclulations
         }
 
         private readonly int n;
-        private readonly double a;
-
-
+        private readonly float a;
+        private readonly float[] m_Lambda;
+        //private float m_FirstMu;
+        //private float m_LastMu;
+        private readonly float[] m_Mu;
+        private readonly float[] m_Beta;
 
         private void InitMatrixInputData()
         {
             matrixInputData.Add(m_X);
-            matrixInputData.Add(m_P);
+            matrixInputData.Add(p);
             matrixInputData.Add(a);
         }
 
