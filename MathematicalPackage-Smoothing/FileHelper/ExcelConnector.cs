@@ -56,9 +56,9 @@ namespace MathematicalPackage_Smoothing.FileHelper
             {
                 for (int j = 0; j < matrixInputData.Count; j++)
                 {
-                    worksheet.Cells[i + 2, ++j] = i + 1;
-                    worksheet.Cells[i + 2, ++j] = x[i];
-                    worksheet.Cells[i + 2, ++j] = p[i];
+                    //worksheet.Cells[i + 2, ++j] = i + 1;
+                    //worksheet.Cells[i + 2, ++j] = x[i];
+                    //worksheet.Cells[i + 2, ++j] = p[i];
                 }
             }
 
@@ -77,6 +77,34 @@ namespace MathematicalPackage_Smoothing.FileHelper
                 {
                     worksheet.Cells[i + 1 + 1, j + step + 2] = matrix[i, j];
                 }
+            }
+            m_Workbook.Save();
+            MessageBox.Show("Успешно сохранено!");
+        }
+
+        public void SaveMatrix2(float[,] matrix)
+        {
+            Excel.Worksheet worksheet = (Excel.Worksheet)m_Excel.ActiveSheet;
+            float maxSize = (float)Math.Sqrt(matrix.Length);
+
+            for (int i = 0; i < maxSize; i++)
+            {
+                for (int j = 0; j < maxSize; j++)
+                {
+                    worksheet.Cells[i + 1, j + 1] = matrix[i, j];
+                }
+            }
+            m_Workbook.Save();
+            MessageBox.Show("Успешно сохранено!");
+        }
+
+        public void SaveVector(float[] vector)
+        {
+            Excel.Worksheet worksheet = (Excel.Worksheet)m_Excel.ActiveSheet;
+
+            for (int i = 0; i < vector.Length; i++)
+            {
+                worksheet.Cells[i+1, 1] = vector[i];
             }
             m_Workbook.Save();
             MessageBox.Show("Успешно сохранено!");
@@ -137,7 +165,7 @@ namespace MathematicalPackage_Smoothing.FileHelper
 
                 for (int i = 0; i < vectorSize; i++)
                 {
-                    string value = worksheet.Cells[i + 2, 3].Text.ToString();
+                    string value = worksheet.Cells[i + 2, 2].Text.ToString();
                     if (value == "")
                     {
                         value = "0";

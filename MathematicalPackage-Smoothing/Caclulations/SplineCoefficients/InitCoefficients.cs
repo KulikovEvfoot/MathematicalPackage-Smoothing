@@ -2,28 +2,16 @@
 using MathNet.Numerics.LinearAlgebra.Single;
 using System;
 
-namespace MathematicalPackage_Smoothing.Caclulations
+namespace MathematicalPackage_Smoothing.Caclulations.SplineCoefficients
 {
     public class InitCoefficients
     {
-        protected float[] InitCoefC(float[,] matrix, float[] vector)
+        protected float[] InitCoefCType2_0(float[,] matrix, float[] vector)
         {
             var coefC = new float[vector.Length + 2];
 
             Matrix<float> matrixNumerics = DenseMatrix.OfArray(matrix);
             Vector<float> vectorNumerics = DenseVector.OfArray(vector);
-
-            ///Распараллеливание от microsoft
-            //float[][] micr = new float[vector.Length][];
-            //for (int i = 0; i < vector.Length; i++)
-            //{
-            //    micr[i] = new float[vector.Length];
-            //    for (int j = 0; j < vector.Length; j++)
-            //    {
-            //        micr[i][j] = matrix[i, j];
-            //    }
-            //}
-            //var ssx = SystemSolve(micr, vector);
 
             var x = matrixNumerics.Solve(vectorNumerics);
             var solve = x.ToArray();
@@ -34,8 +22,27 @@ namespace MathematicalPackage_Smoothing.Caclulations
                 coefC[i] = solve[i - 1];
             }
             coefC[coefC.Length - 1] = 0;
+
             return coefC;
         }
+
+        protected float[] InitCoefCType1Or2(float[,] matrix, float[] vector)
+        {
+            var coefC = new float[vector.Length];
+            Matrix<float> matrixNumerics = DenseMatrix.OfArray(matrix);
+            Vector<float> vectorNumerics = DenseVector.OfArray(vector);
+
+            var x = matrixNumerics.Solve(vectorNumerics);
+            var solve = x.ToArray();
+            
+            for (int i = 0; i < coefC.Length; i++)
+            {
+                coefC[i] = solve[i];
+            }
+
+            return coefC;
+        }
+
 
         protected float[] InitCoefA(int n, float[] h, float[] p, float[] f, float a, float[] coefC)
         {
@@ -43,7 +50,7 @@ namespace MathematicalPackage_Smoothing.Caclulations
 
             for (int i = 1; i < coefA.Length - 1; i++)
             {
-                coefA[i] = f[i] - a * p[i] * (((coefC[i + 1] - coefC[i]) / h[i]) - (coefC[i] - coefC[i - 1]) / h[i - 1]);
+                coefA[i] = f[i] - a * p[i] * ((coefC[i + 1] - coefC[i]) / h[i] - (coefC[i] - coefC[i - 1]) / h[i - 1]);
             }
 
             coefA[0] = f[0] - a * p[0] * ((coefC[1] - coefC[0]) / h[0]);
@@ -56,9 +63,9 @@ namespace MathematicalPackage_Smoothing.Caclulations
         {
             var coefB = new float[n];
 
-            for (int i = 0; i < n - 1; i++) 
+            for (int i = 0; i < n - 1; i++)
             {
-                coefB[i] = ((coefA[i + 1] - coefA[i]) / h[i]) - (h[i] / 6 * (coefC[i + 1] + 2 * coefC[i]));
+                coefB[i] = (coefA[i + 1] - coefA[i]) / h[i] - h[i] / 6 * (coefC[i + 1] + 2 * coefC[i]);
             }
 
             return coefB;
@@ -70,13 +77,25 @@ namespace MathematicalPackage_Smoothing.Caclulations
 
             for (int i = 0; i < n - 1; i++)
             {
-                coefD[i] = (1 / (6 * h[i])) * (coefC[i + 1] - coefC[i]);
+                coefD[i] = 1 / (6 * h[i]) * (coefC[i + 1] - coefC[i]);
             }
 
             return coefD;
         }
 
 
+
+        ///Распараллеливание от microsoft
+        //float[][] micr = new float[vector.Length][];
+        //for (int i = 0; i < vector.Length; i++)
+        //{
+        //    micr[i] = new float[vector.Length];
+        //    for (int j = 0; j < vector.Length; j++)
+        //    {
+        //        micr[i][j] = matrix[i, j];
+        //    }
+        //}
+        //var ssx = SystemSolve(micr, vector);
         private float[][] MatrixCreate(int rows, int cols)
         {
             // Создаем матрицу, полностью инициализированную

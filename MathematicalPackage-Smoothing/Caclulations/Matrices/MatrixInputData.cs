@@ -1,4 +1,4 @@
-﻿namespace MathematicalPackage_Smoothing.Caclulations
+﻿namespace MathematicalPackage_Smoothing.Caclulations.Matrices
 {
     public class MatrixInputData
     {

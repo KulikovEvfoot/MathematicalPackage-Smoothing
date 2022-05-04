@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MathematicalPackage_Smoothing.Caclulations
+namespace MathematicalPackage_Smoothing.Caclulations.Matrices
 {
-    public class InitMatrix : MatrixCalculation
+    class InitMatrixType2 : MatrixCalculation
     {
         public float[,] matrix;
         public List<object> matrixInputData = new List<object>();
@@ -10,7 +14,7 @@ namespace MathematicalPackage_Smoothing.Caclulations
         public readonly float[] m_X;
         public readonly float[] p;
 
-        public InitMatrix(int n, float x, float a)
+        public InitMatrixType2(int n, float x, float a)
         {
             this.n = n;
             this.a = a;
@@ -20,11 +24,11 @@ namespace MathematicalPackage_Smoothing.Caclulations
             m_Mu = new float[n];
             m_Lambda = new float[n];
             m_Beta = new float[n];
-            matrix = new float[n - 2, n - 2];
+            matrix = new float[n, n];
 
             for (int i = 0; i < n; i++)
             {
-                m_X[i] = InitX(x ,i);
+                m_X[i] = InitX(x, i);
             }
 
             for (int i = 0; i < n; i++)
@@ -37,24 +41,26 @@ namespace MathematicalPackage_Smoothing.Caclulations
                 h[i] = InitH(m_X[i], m_X[i + 1]);
             }
 
+            m_Lambda[0] = InitFirstLambdaType2();
+            m_Lambda[n - 1] = InitLastLambdaType2();
             for (int i = 1; i < n - 1; i++)
             {
-                m_Lambda[i] = InitLambda(h[i - 1], h[i], a, p[i - 1], p[i], p[i + 1]);
+                m_Lambda[i] = InitLambdaType2_0(h[i - 1], h[i], a, p[i - 1], p[i], p[i + 1]);
             }
 
+            m_Mu[0] = InitFirstMuType2();
+            m_Mu[n - 2] = InitLastMuType2();
             for (int i = 1; i < n - 2; i++)
             {
-                m_Mu[i] = InitMu(h[i], a, p[i], h[i - 1], p[i + 1], h[i + 1]);
+                m_Mu[i] = InitMuType2_0(h[i], a, p[i], h[i - 1], p[i + 1], h[i + 1]);
             }
 
-            for (int i = 1; i < n - 2; i++)
+            m_Beta[0] = InitFirstBetaType2();
+            m_Beta[n - 3] = InitLastBetaType2();
+            for (int i = 1; i < n - 3; i++)
             {
-                m_Beta[i] = InitBeta(a, p[i + 1], h[i], h[i + 1]);
+                m_Beta[i] = InitBetaType2_0(a, p[i + 1], h[i], h[i + 1]);
             }
-
-            /// нигде не используются ///
-            //m_FirstMu = InitFirstMu(m_H[0], a, m_P[0], m_P[1], m_H[1]);
-            //m_LastMu = InitLastMu(m_H[n - 2], a, m_P[n - 1], m_P[n - 2], m_H[n - 3]);
         }
 
         public void CreateMatrix()
@@ -67,9 +73,8 @@ namespace MathematicalPackage_Smoothing.Caclulations
 
         private readonly int n;
         private readonly float a;
+
         private readonly float[] m_Lambda;
-        //private float m_FirstMu;
-        //private float m_LastMu;
         private readonly float[] m_Mu;
         private readonly float[] m_Beta;
 
@@ -82,35 +87,35 @@ namespace MathematicalPackage_Smoothing.Caclulations
 
         private void ShapeBetaDiag()
         {
-            for (int i = 0; i < n - 4; i++)
+            for (int i = 0; i < n - 2; i++)
             {
-                matrix[i, i + 2] = m_Beta[i + 1];
+                matrix[i, i + 2] = m_Beta[i];
             }
 
-            for (int i = 0; i < n - 4; i++)
+            for (int i = 0; i < n - 2; i++)
             {
-                matrix[i + 2, i] = m_Beta[i + 1];
+                matrix[i + 2, i] = m_Beta[i];
             }
         }
 
         private void ShapeMuDiag()
         {
-            for (int i = 0; i < n - 3; i++)
+            for (int i = 0; i < n - 1; i++)
             {
-                matrix[i, i + 1] = m_Mu[i + 1]; 
+                matrix[i, i + 1] = m_Mu[i];
             }
 
-            for (int i = 0; i < n - 3; i++)
+            for (int i = 0; i < n - 1; i++)
             {
-                matrix[i + 1, i] = m_Mu[i + 1]; 
+                matrix[i + 1, i] = m_Mu[i];
             }
         }
 
         private void ShapeLambdaDiag()
         {
-            for (int i = 0; i < n - 2; i++)
+            for (int i = 0; i < n; i++)
             {
-                matrix[i, i] = m_Lambda[i + 1];
+                matrix[i, i] = m_Lambda[i];
             }
         }
     }

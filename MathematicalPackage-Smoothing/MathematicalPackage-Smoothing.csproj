@@ -99,12 +99,16 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caclulations\CalculateSpline.cs" />
-    <Compile Include="Caclulations\InitCoefficients.cs" />
-    <Compile Include="Caclulations\InitMatrix.cs" />
-    <Compile Include="Caclulations\MatrixCalculation.cs" />
-    <Compile Include="Caclulations\FormVector.cs" />
-    <Compile Include="Caclulations\MatrixInputData.cs" />
+    <Compile Include="Caclulations\Matrices\InitMatrixType2.cs" />
+    <Compile Include="Caclulations\SplineCoefficients\CalculateSpline.cs" />
+    <Compile Include="Caclulations\SplineCoefficients\InitCoefficients.cs" />
+    <Compile Include="Caclulations\Matrices\InitMatrixType1.cs" />
+    <Compile Include="Caclulations\Matrices\InitMatrixType2_0.cs" />
+    <Compile Include="Caclulations\Matrices\MatrixCalculation.cs" />
+    <Compile Include="Caclulations\Vectors\FormVectorType1.cs" />
+    <Compile Include="Caclulations\Vectors\FormVectorType2.cs" />
+    <Compile Include="Caclulations\Vectors\FormVectorType2_0.cs" />
+    <Compile Include="Caclulations\Matrices\MatrixInputData.cs" />
     <Compile Include="Charts\ChartsEditor.cs" />
     <Compile Include="Design\FormDesigner.cs">
       <SubType>Form</SubType>
@@ -159,5 +163,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

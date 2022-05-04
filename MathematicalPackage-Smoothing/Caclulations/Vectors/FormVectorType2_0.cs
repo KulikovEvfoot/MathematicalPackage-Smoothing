@@ -1,9 +1,9 @@
-﻿namespace MathematicalPackage_Smoothing.Caclulations
+﻿namespace MathematicalPackage_Smoothing.Caclulations.Vectors
 {
-    public class FormVector
+    public class FormVectorType2_0
     {
         public float[] vector;
-        public FormVector(int n, float[] f, float[] h)
+        public FormVectorType2_0(int n, float[] f, float[] h)
         {
             vector = new float[n-2];      
 
