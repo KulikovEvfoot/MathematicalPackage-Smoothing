@@ -99,15 +99,14 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Caclulations\Matrices\InitMatrixType2.cs" />
+    <Compile Include="Caclulations\BoundaryConditions.cs" />
+    <Compile Include="Caclulations\Matrices\InitMatrix.cs" />
+    <Compile Include="Caclulations\SmoothingParameter\CalculateA.cs" />
+    <Compile Include="Caclulations\SmoothingParameter\CalculateP.cs" />
     <Compile Include="Caclulations\SplineCoefficients\CalculateSpline.cs" />
     <Compile Include="Caclulations\SplineCoefficients\InitCoefficients.cs" />
-    <Compile Include="Caclulations\Matrices\InitMatrixType1.cs" />
-    <Compile Include="Caclulations\Matrices\InitMatrixType2_0.cs" />
     <Compile Include="Caclulations\Matrices\MatrixCalculation.cs" />
-    <Compile Include="Caclulations\Vectors\FormVectorType1.cs" />
-    <Compile Include="Caclulations\Vectors\FormVectorType2.cs" />
-    <Compile Include="Caclulations\Vectors\FormVectorType2_0.cs" />
+    <Compile Include="Caclulations\Vectors\FormVector.cs" />
     <Compile Include="Caclulations\Matrices\MatrixInputData.cs" />
     <Compile Include="Charts\ChartsEditor.cs" />
     <Compile Include="Design\FormDesigner.cs">

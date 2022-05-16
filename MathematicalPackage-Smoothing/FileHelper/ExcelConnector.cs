@@ -165,7 +165,7 @@ namespace MathematicalPackage_Smoothing.FileHelper
 
                 for (int i = 0; i < vectorSize; i++)
                 {
-                    string value = worksheet.Cells[i + 2, 2].Text.ToString();
+                    string value = worksheet.Cells[i + 2, 3].Text.ToString();
                     if (value == "")
                     {
                         value = "0";

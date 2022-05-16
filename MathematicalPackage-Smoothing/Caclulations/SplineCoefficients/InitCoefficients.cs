@@ -1,50 +1,95 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+﻿using MathematicalPackage_Smoothing.Caclulations.Matrices;
+using MathematicalPackage_Smoothing.Caclulations.Vectors;
+using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Single;
 using System;
 
 namespace MathematicalPackage_Smoothing.Caclulations.SplineCoefficients
 {
-    public class InitCoefficients
+    public class InitCoefficients : MatrixInputData
     {
-        protected float[] InitCoefCType2_0(float[,] matrix, float[] vector)
+        protected float[] h;
+
+        protected InitCoefficients(int n, float[] x)
         {
-            var coefC = new float[vector.Length + 2];
-
-            Matrix<float> matrixNumerics = DenseMatrix.OfArray(matrix);
-            Vector<float> vectorNumerics = DenseVector.OfArray(vector);
-
-            var x = matrixNumerics.Solve(vectorNumerics);
-            var solve = x.ToArray();
-
-            coefC[0] = 0;
-            for (int i = 1; i < coefC.Length - 1; i++)
+            h = new float[n];
+            for (int i = 0; i < n - 1; i++)
             {
-                coefC[i] = solve[i - 1];
+                h[i] = InitH(x[i], x[i + 1]);
             }
-            coefC[coefC.Length - 1] = 0;
+        }
+
+        protected float[] InitCoefC(int n, float[] x, float[] p, float[] f, float a, float ds1, float ds2, BoundaryConditions leftType, BoundaryConditions rightType)
+        {
+            InitMatrix initMatrix = new InitMatrix(
+                n,
+                x,
+                p,
+                a,
+                leftType,
+                rightType);
+
+            FormVector formVector = new FormVector(
+                n,
+                x,
+                f,
+                ds1,
+                ds2,
+                leftType,
+                rightType);
+
+            var coefC = new float[n];
+
+            float[,] newMatrix;
+            newMatrix = ChooseMatrixSize(initMatrix, leftType, rightType);
+            float[] newVector;
+            newVector = ChooseVectorSize(formVector, leftType, rightType);
+
+            Matrix<float> matrixNumerics = DenseMatrix.OfArray(newMatrix);
+            Vector<float> vectorNumerics = DenseVector.OfArray(newVector);
+            var solve = matrixNumerics.Solve(vectorNumerics);
+
+            coefC = PullingCoefC(coefC, solve, leftType, rightType);
+            coefC = ChooseCoefCType(coefC, leftType, rightType);
 
             return coefC;
         }
 
-        protected float[] InitCoefCType1Or2(float[,] matrix, float[] vector)
+        private float[] PullingCoefC(float[] coefC, Vector<float> solve, BoundaryConditions leftType, BoundaryConditions rightType)
         {
-            var coefC = new float[vector.Length];
-            Matrix<float> matrixNumerics = DenseMatrix.OfArray(matrix);
-            Vector<float> vectorNumerics = DenseVector.OfArray(vector);
-
-            var x = matrixNumerics.Solve(vectorNumerics);
-            var solve = x.ToArray();
-            
-            for (int i = 0; i < coefC.Length; i++)
+            if (leftType == BoundaryConditions.Type_2_0 && rightType == BoundaryConditions.Type_2_0)
             {
-                coefC[i] = solve[i];
+                for (int i = 1; i < coefC.Length - 1; i++)
+                {
+                    coefC[i] = solve[i - 1];
+                }
+            }
+            else if (leftType == BoundaryConditions.Type_2_0)
+            {
+                for (int i = 0; i < coefC.Length - 1; i++)
+                {
+                    coefC[i + 1] = solve[i];
+                }
+            }
+            else if (rightType == BoundaryConditions.Type_2_0)
+            {
+                for (int i = 0; i < coefC.Length - 1; i++)
+                {
+                    coefC[i] = solve[i];
+                }
+            }
+            else
+            {
+                for (int i = 0; i < coefC.Length; i++)
+                {
+                    coefC[i] = solve[i];
+                }
             }
 
             return coefC;
         }
 
-
-        protected float[] InitCoefA(int n, float[] h, float[] p, float[] f, float a, float[] coefC)
+        protected float[] InitCoefA(int n, float[] p, float[] f, float a, float[] coefC)
         {
             var coefA = new float[n];
 
@@ -59,19 +104,19 @@ namespace MathematicalPackage_Smoothing.Caclulations.SplineCoefficients
             return coefA;
         }
 
-        protected float[] InitCoefB(int n, float[] h, float[] coefA, float[] coefC)
+        protected float[] InitCoefB(int n, float[] coefA, float[] coefC)
         {
             var coefB = new float[n];
 
             for (int i = 0; i < n - 1; i++)
             {
-                coefB[i] = (coefA[i + 1] - coefA[i]) / h[i] - h[i] / 6 * (coefC[i + 1] + 2 * coefC[i]);
+                coefB[i] = ((coefA[i + 1] - coefA[i]) / h[i]) - (h[i] / 6 * (coefC[i + 1] + 2 * coefC[i]));
             }
 
             return coefB;
         }
 
-        protected float[] InitCoefD(int n, float[] h, float[] coefC)
+        protected float[] InitCoefD(int n, float[] coefC)
         {
             var coefD = new float[n - 1];
 
@@ -83,147 +128,116 @@ namespace MathematicalPackage_Smoothing.Caclulations.SplineCoefficients
             return coefD;
         }
 
-
-
-        ///Распараллеливание от microsoft
-        //float[][] micr = new float[vector.Length][];
-        //for (int i = 0; i < vector.Length; i++)
-        //{
-        //    micr[i] = new float[vector.Length];
-        //    for (int j = 0; j < vector.Length; j++)
-        //    {
-        //        micr[i][j] = matrix[i, j];
-        //    }
-        //}
-        //var ssx = SystemSolve(micr, vector);
-        private float[][] MatrixCreate(int rows, int cols)
+        private float[,] ChooseMatrixSize(InitMatrix initMatrix, BoundaryConditions leftType, BoundaryConditions rightType)
         {
-            // Создаем матрицу, полностью инициализированную
-            // значениями 0.0. Проверка входных параметров опущена.
-            float[][] result = new float[rows][];
-            for (int i = 0; i < rows; ++i)
-                result[i] = new float[cols]; // автоинициализация в 0.0
-            return result;
-        }
-
-        private float[][] MatrixDecompose(float[][] matrix, out int[] perm, out int toggle)
-        {
-            // Разложение LUP Дулитла. Предполагается,
-            // что матрица квадратная.
-            int n = matrix.Length; // для удобства
-            float[][] result = MatrixDuplicate(matrix);
-            perm = new int[n];
-            for (int i = 0; i < n; ++i) { perm[i] = i; }
-            toggle = 1;
-            for (int j = 0; j < n - 1; ++j) // каждый столбец
+            float[,] newMatrix = null;
+            if (leftType == BoundaryConditions.Type_2_0 && rightType == BoundaryConditions.Type_2_0)
             {
-                float colMax = Math.Abs(result[j][j]); // Наибольшее значение в столбце j
-                int pRow = j;
-                for (int i = j + 1; i < n; ++i)
+                newMatrix = new float[(int)Math.Sqrt(initMatrix.matrix.Length) - 2, (int)Math.Sqrt(initMatrix.matrix.Length) - 2];
+
+                for (int i = 0; i < Math.Sqrt(newMatrix.Length); i++)
                 {
-                    if (result[i][j] > colMax)
+                    for (int j = 0; j < Math.Sqrt(newMatrix.Length); j++)
                     {
-                        colMax = result[i][j];
-                        pRow = i;
+                        newMatrix[i, j] = initMatrix.matrix[i + 1, j + 1];
                     }
                 }
-                if (pRow != j) // перестановка строк
-                {
-                    float[] rowPtr = result[pRow];
-                    result[pRow] = result[j];
-                    result[j] = rowPtr;
-                    int tmp = perm[pRow]; // Меняем информацию о перестановке
-                    perm[pRow] = perm[j];
-                    perm[j] = tmp;
-                    toggle = -toggle; // переключатель перестановки строк
-                }
-                if (Math.Abs(result[j][j]) < 1.0E-20)
-                    return null;
-                for (int i = j + 1; i < n; ++i)
-                {
-                    result[i][j] /= result[j][j];
-                    for (int k = j + 1; k < n; ++k)
-                        result[i][k] -= result[i][j] * result[j][k];
-                }
-            } // основной цикл по столбцу j
-            return result;
-        }
-
-        private float[][] MatrixDuplicate(float[][] matrix)
-        {
-            // Предполагается, что матрица не нулевая
-            float[][] result = MatrixCreate(matrix.Length, matrix[0].Length);
-            for (int i = 0; i < matrix.Length; ++i) // Копирование значений
-                for (int j = 0; j < matrix[i].Length; ++j)
-                    result[i][j] = matrix[i][j];
-            return result;
-        }
-
-        private float[] HelperSolve(float[][] luMatrix, float[] b)
-        {
-            // Решаем luMatrix * x = b
-            int n = luMatrix[0].Length;
-            float[] x = new float[n];
-            b.CopyTo(x, 0);
-            for (int i = 1; i < n; ++i)
-            {
-                float sum = x[i];
-                for (int j = 0; j < i; ++j)
-                    sum -= luMatrix[i][j] * x[j];
-                x[i] = sum;
             }
-            x[n - 1] /= luMatrix[n - 1][n - 1];
-            for (int i = n - 2; i >= 0; --i)
+            else if (leftType == BoundaryConditions.Type_2_0)
             {
-                float sum = x[i];
-                for (int j = i + 1; j < n; ++j)
-                    sum -= luMatrix[i][j] * x[j];
-                x[i] = sum / luMatrix[i][i];
-            }
-            return x;
-        }
+                newMatrix = new float[(int)Math.Sqrt(initMatrix.matrix.Length) - 1, (int)Math.Sqrt(initMatrix.matrix.Length) - 1];
 
-        private float[][] MatrixInverse(float[][] matrix)
-        {
-            int n = matrix.Length;
-            float[][] result = MatrixDuplicate(matrix);
-            int[] perm;
-            int toggle;
-            float[][] lum = MatrixDecompose(matrix, out perm, out toggle);
-            if (lum == null)
-                throw new Exception("Unable to compute inverse");
-            float[] b = new float[n];
-            for (int i = 0; i < n; ++i)
-            {
-                for (int j = 0; j < n; ++j)
+                for (int i = 0; i < Math.Sqrt(newMatrix.Length); i++)
                 {
-                    if (i == perm[j])
-                        b[j] = 1.0f;
-                    else
-                        b[j] = 0.0f;
+                    for (int j = 0; j < Math.Sqrt(newMatrix.Length); j++)
+                    {
+                        newMatrix[i, j] = initMatrix.matrix[i + 1, j + 1];
+                    }
                 }
-                float[] x = HelperSolve(lum, b);
-                for (int j = 0; j < n; ++j)
-                    result[j][i] = x[j];
             }
-            return result;
+            else if (rightType == BoundaryConditions.Type_2_0)
+            {
+                newMatrix = new float[(int)Math.Sqrt(initMatrix.matrix.Length) - 1, (int)Math.Sqrt(initMatrix.matrix.Length) - 1];
+
+                for (int i = 0; i < Math.Sqrt(newMatrix.Length); i++)
+                {
+                    for (int j = 0; j < Math.Sqrt(newMatrix.Length); j++)
+                    {
+                        newMatrix[i, j] = initMatrix.matrix[i, j];
+                    }
+                }
+            }
+            else
+            {
+                newMatrix = initMatrix.matrix;
+            }
+            return newMatrix;
         }
 
-        private float[] SystemSolve(float[][] A, float[] b)
+        private float[] ChooseVectorSize(FormVector formVector, BoundaryConditions leftType, BoundaryConditions rightType)
         {
-            // Решаем Ax = b
-            int n = A.Length;
-            int[] perm;
-            int toggle;
-            float[][] luMatrix = MatrixDecompose(
-              A, out perm, out toggle);
-            if (luMatrix == null)
-                return null; // или исключение
-            float[] bp = new float[b.Length];
-            for (int i = 0; i < n; ++i)
-                bp[i] = b[perm[i]];
-            float[] x = HelperSolve(luMatrix, bp);
-            return x;
+            float[] newVector = null;
+            if (leftType == BoundaryConditions.Type_2_0 && rightType == BoundaryConditions.Type_2_0)
+            {
+                newVector = new float[formVector.vector.Length - 2];
+                for (int i = 0; i < newVector.Length; i++)
+                {
+                    newVector[i] = formVector.vector[i + 1];
+                }
+            }
+            else if (leftType == BoundaryConditions.Type_2_0)
+            {
+                newVector = new float[formVector.vector.Length - 1];
+                for (int i = 0; i < newVector.Length; i++)
+                {
+                    newVector[i] = formVector.vector[i + 1];
+                }
+            }
+            else if (rightType == BoundaryConditions.Type_2_0)
+            {
+                newVector = new float[formVector.vector.Length - 1];
+                for (int i = 0; i < newVector.Length; i++)
+                {
+                    newVector[i] = formVector.vector[i];
+                }
+            }
+            else
+            {
+                newVector = formVector.vector;
+            }
+
+            return newVector;
+        }
+
+        private float[] ChooseCoefCType(float[] coefC, BoundaryConditions leftType, BoundaryConditions rightType)
+        {
+            if (leftType == BoundaryConditions.Type_1)
+            {
+                //ignore
+            }
+            else if (leftType == BoundaryConditions.Type_2)
+            {
+                //ignore
+            }
+            else if (leftType == BoundaryConditions.Type_2_0)
+            {
+                coefC[0] = 0;
+            }
+
+            if (rightType == BoundaryConditions.Type_1)
+            {
+                //ignore
+            }
+            else if (rightType == BoundaryConditions.Type_2)
+            {
+                //ignore
+            }
+            else if (rightType == BoundaryConditions.Type_2_0)
+            {
+                coefC[coefC.Length - 1] = 0;
+            }
+
+            return coefC;
         }
     }
 }
