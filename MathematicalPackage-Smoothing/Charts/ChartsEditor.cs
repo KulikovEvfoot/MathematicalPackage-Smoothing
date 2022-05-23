@@ -7,7 +7,7 @@ namespace MathematicalPackage_Smoothing.Charts
 {
     public class ChartsEditor
     {
-        public void InputChart(float[] spline, float step)
+        public void InputChart(float[] spline, float step, string legend)
         {
             ChartValues<ObservablePoint> charts = new ChartValues<ObservablePoint>();
             float x = 0;
@@ -19,6 +19,7 @@ namespace MathematicalPackage_Smoothing.Charts
 
             m_Line.Add(new LineSeries()
             {
+                Title = legend,
                 Values = charts,
                 Fill = System.Windows.Media.Brushes.Transparent
             });
@@ -27,6 +28,8 @@ namespace MathematicalPackage_Smoothing.Charts
         public void ShowSpline(LiveCharts.WinForms.CartesianChart cartesianChart)
         {
             cartesianChart.Series = new SeriesCollection();
+            cartesianChart.LegendLocation = LegendLocation.Right;
+            cartesianChart.DefaultLegend.Visibility = System.Windows.Visibility.Visible;
             cartesianChart.Series.AddRange(m_Line);
         }
 
