@@ -230,7 +230,18 @@ namespace MathematicalPackage_Smoothing
 
             return a;
         }
-        
+
+        private void ShowSpline()
+        {
+            ProcessedDataGridView.Columns.Add("f", "f");
+            ProcessedDataGridView.Columns.Add("a", "a");
+            foreach (var item in m_F)
+            {
+                ProcessedDataGridView.Rows.Add(item);
+            }
+            ProcessedDataGridView.Rows[0].Cells[1].Value = m_A;
+        }
+
         private void CalculatingSpline()
         {
             m_LeftType = CheckTypeOfConditions(LeftComboBox.Text);
@@ -318,6 +329,20 @@ namespace MathematicalPackage_Smoothing
             if (VerificationSpecifiedData())
             {
                 CalculatingSpline();
+                ShowSpline();
+                SaveSplinePanel.Enabled = true;
+            }
+        }
+
+        private void SaveSplineButton_Click(object sender, EventArgs e)
+        {
+            WindowOpener saveFile = new WindowOpener();
+            if (!string.IsNullOrEmpty(saveFile.filePath))
+            {
+                using (CsvConnector csvOpen = new CsvConnector())
+                {
+                    csvOpen.SaveCsvFile(saveFile.filePath, ProcessedDataGridView, m_F, m_A);
+                }
             }
         }
 
@@ -327,15 +352,15 @@ namespace MathematicalPackage_Smoothing
 
             if (OriginalCheckbox.Checked)
             {
-                chartsEditor.InputChart(m_F, 0.02f, "Original");
+                chartsEditor.InputChart(m_F, m_X, "Original");
             }
             if (SmoothedCheckbox.Checked)
             {
-                chartsEditor.InputChart(m_Spline, 0.02f, "Smoothing");
+                chartsEditor.InputChart(m_Spline, m_X, "Smoothing");
             }
             if (DerivativeCheckbox.Checked)
             {
-                chartsEditor.InputChart(m_D1Spline, 0.02f, "Derivative");
+                chartsEditor.InputChart(m_D1Spline, m_X, "Derivative");
             }
 
             chartsEditor.ShowSpline(MainCartesianChart);

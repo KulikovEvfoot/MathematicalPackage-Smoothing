@@ -13,7 +13,7 @@ namespace MathematicalPackage_Smoothing.FileHelper
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
-                openFileDialog.Filter = "Csv Files|*.csv;*.xls;*.xlsx;*.xlsm";
+                openFileDialog.Filter = "Csv Files|*.csv;";
                 openFileDialog.Title = "Выберите документ для загрузки данных";
                 openFileDialog.RestoreDirectory = true;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)

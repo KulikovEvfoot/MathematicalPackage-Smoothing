@@ -7,14 +7,12 @@ namespace MathematicalPackage_Smoothing.Charts
 {
     public class ChartsEditor
     {
-        public void InputChart(float[] spline, float step, string legend)
+        public void InputChart(float[] spline, float[] steps, string legend)
         {
             ChartValues<ObservablePoint> charts = new ChartValues<ObservablePoint>();
-            float x = 0;
             for (int i = 0; i < spline.Length; i++)
             {
-                charts.Add(new ObservablePoint(x, spline[i]));
-                x += step;
+                charts.Add(new ObservablePoint(steps[i], spline[i]));
             }
 
             m_Line.Add(new LineSeries()

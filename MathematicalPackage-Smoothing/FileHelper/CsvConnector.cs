@@ -16,8 +16,10 @@ namespace MathematicalPackage_Smoothing.FileHelper
         {
             try
             {
-                CreateReader(filePath);
-                List<SplineData> splineData = csvReader.GetRecords<SplineData>().ToList();
+                StreamReader streamReader = new StreamReader(new FileStream(filePath, FileMode.Open));
+                var config = new CsvConfiguration(CultureInfo.CurrentCulture) { Delimiter = ";" };
+                CsvReader csvReader = new CsvReader(streamReader, config);
+                List<SplineInputData> splineData = csvReader.GetRecords<SplineInputData>().ToList();
                 dataGridView.DataSource = splineData;
                 return dataGridView;
             }
@@ -28,16 +30,26 @@ namespace MathematicalPackage_Smoothing.FileHelper
             return dataGridView;
         }
 
-        public void SaveCsvFile(string filePath, DataGridView dataGridView)
+        public void SaveCsvFile(string filePath, DataGridView dataGridView, float[] f, float a)
         {
             try
             {
                 using (var sw = new StreamWriter(filePath))
                 {
-                    var writer = new CsvWriter(sw, CultureInfo.InvariantCulture);
-                    foreach (SplineData item in dataGridView.DataSource as List<SplineData>)
+                    var config = new CsvConfiguration(CultureInfo.CurrentCulture) { Delimiter = ";" };
+                    var writer = new CsvWriter(sw, config);
+
+                    writer.WriteHeader(typeof(SplineOutputData));
+                    writer.NextRecord();
+
+                    writer.WriteRecord(f[0]);
+                    writer.WriteRecord(a);
+                    writer.NextRecord();
+
+                    for (int i = 1; i < f.Length; i++)
                     {
-                        writer.WriteRecord(item);
+                        writer.WriteRecord(f[i]);
+                        writer.NextRecord();
                     }
                 }
             }
@@ -49,16 +61,6 @@ namespace MathematicalPackage_Smoothing.FileHelper
 
         public void Dispose()
         {
-            streamReader.Close();
-        }
-
-        private StreamReader streamReader;
-        private CsvReader csvReader;
-        private void CreateReader(string filePath)
-        {
-            streamReader = new StreamReader(new FileStream(filePath, FileMode.Open));
-            var config = new CsvConfiguration(CultureInfo.CurrentCulture) { Delimiter = ";" };
-            csvReader = new CsvReader(streamReader, config);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace MathematicalPackage_Smoothing.Design
         {
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Orange200, Primary.Orange300, Primary.BlueGrey500, Accent.LightBlue200, TextShade.BLACK);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.DeepPurple200, Primary.DeepPurple300, Primary.DeepPurple500, Accent.DeepPurple700, TextShade.BLACK);
         }
     }
 }
