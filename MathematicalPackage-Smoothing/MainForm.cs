@@ -8,7 +8,6 @@ using MathematicalPackage_Smoothing.Caclulations;
 using MathematicalPackage_Smoothing.Caclulations.SmoothingParameter;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 
 namespace MathematicalPackage_Smoothing
 {
@@ -34,6 +33,7 @@ namespace MathematicalPackage_Smoothing
             ChartsPanel.Enabled = false;
             ShowChartsPanel.Enabled = false;
             SaveChartPanel.Enabled = false;
+            ClearFields();
         }
 
         private void EnableIfFileSelected()
@@ -41,7 +41,6 @@ namespace MathematicalPackage_Smoothing
             BoundaryConditionsPanel.Enabled = true;
             SmoothingParameterPanel.Enabled = true;
             CalculateSplinePanel.Enabled = true;
-            CalculateAPanel.Enabled = true;
             DsPanel.Enabled = true;
         }
 
@@ -148,6 +147,11 @@ namespace MathematicalPackage_Smoothing
 
         private bool FillSplineParameters()
         {
+            if (InputDataGridView.Rows.Count == 0)
+            {
+                return false;
+            }
+
             m_N = InputDataGridView.Rows.Count;
             m_X = new float[m_N];
             m_P = new float[m_N];
@@ -231,8 +235,9 @@ namespace MathematicalPackage_Smoothing
             return a;
         }
 
-        private void ShowSpline()
+        private void ShowSmoothSpline()
         {
+            ProcessedDataGridView.Columns.Clear();
             ProcessedDataGridView.Columns.Add("f", "f");
             ProcessedDataGridView.Columns.Add("a", "a");
             foreach (var item in m_F)
@@ -242,7 +247,7 @@ namespace MathematicalPackage_Smoothing
             ProcessedDataGridView.Rows[0].Cells[1].Value = m_A;
         }
 
-        private void CalculatingSpline()
+        private bool CalculatingSpline()
         {
             m_LeftType = CheckTypeOfConditions(LeftComboBox.Text);
             m_RightType = CheckTypeOfConditions(RightComboBox.Text);
@@ -281,29 +286,34 @@ namespace MathematicalPackage_Smoothing
                     m_RightType);
 
                 EnableCharts();
+                return true;
             }
             catch (Exception ex)
             {
-                MaterialMessageBox.Show(ex.ToString());
+                MaterialMessageBox.Show("Error in calculations");
+                return false;
             }
         }
 
         private void UploadDataButton_Click(object sender, EventArgs e)
         {
             WindowOpener openFile = new WindowOpener();
-            if (!string.IsNullOrEmpty(openFile.filePath))
+            string filePath = openFile.OpenFile();
+            if (!string.IsNullOrEmpty(filePath))
             {
                 using (CsvConnector csvOpen = new CsvConnector())
                 {
-                    InputDataGridView = csvOpen.PullData(openFile.filePath, InputDataGridView);
+                    InputDataGridView = csvOpen.PullData(filePath, InputDataGridView);
                 }
 
+                ProcessedDataGridView.Columns.Clear();
                 if (FillSplineParameters())
                 {
                     EnableIfFileSelected();
                 }
                 else
                 {
+                    InputDataGridView.Columns.Clear();
                     DisableAllPanels();
                 }
             }
@@ -328,20 +338,23 @@ namespace MathematicalPackage_Smoothing
         {
             if (VerificationSpecifiedData())
             {
-                CalculatingSpline();
-                ShowSpline();
-                SaveSplinePanel.Enabled = true;
+                if (CalculatingSpline())
+                {
+                    ShowSmoothSpline();
+                    SaveSplinePanel.Enabled = true;
+                }
             }
         }
 
         private void SaveSplineButton_Click(object sender, EventArgs e)
         {
             WindowOpener saveFile = new WindowOpener();
-            if (!string.IsNullOrEmpty(saveFile.filePath))
+            string filePath = saveFile.SaveFile();
+            if (!string.IsNullOrEmpty(filePath))
             {
                 using (CsvConnector csvOpen = new CsvConnector())
                 {
-                    csvOpen.SaveCsvFile(saveFile.filePath, ProcessedDataGridView, m_F, m_A);
+                    csvOpen.SaveCsvFile(filePath, ProcessedDataGridView, m_F, m_A);
                 }
             }
         }
@@ -370,9 +383,11 @@ namespace MathematicalPackage_Smoothing
 
         private void SaveChartButton_Click(object sender, EventArgs e)
         {
+            WindowOpener saveFile = new WindowOpener();
+            string filePath = saveFile.SavePngFile();
             Bitmap bmp = new Bitmap(MainCartesianChart.Width, MainCartesianChart.Height);
             MainCartesianChart.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-            bmp.Save(Directory.GetCurrentDirectory() + "aaa.Png", ImageFormat.Png);
+            bmp.Save(filePath, ImageFormat.Png);
         }
 
         private void SubstitutionATextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
@@ -400,6 +415,21 @@ namespace MathematicalPackage_Smoothing
             {
                 e.Handled = true;
             }
+        }
+
+        private void ClearFields()
+        {
+            SubstitutionATextBox.Clear();
+            MinATextBox.Clear();
+            MaxATextBox.Clear();
+            Ds1TextBox.Clear();
+            Ds2TextBox.Clear();
+            SubstitutionRadioButton.Checked = false;
+            CalculateRadioButton.Checked = false;
+            OriginalCheckbox.Checked = false;
+            SmoothedCheckbox.Checked = false;
+            DerivativeCheckbox.Checked = false;
+            MainCartesianChart.Series.Clear();
         }
 
         private int m_N;

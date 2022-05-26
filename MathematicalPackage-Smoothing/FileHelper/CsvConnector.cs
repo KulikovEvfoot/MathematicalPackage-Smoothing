@@ -21,11 +21,13 @@ namespace MathematicalPackage_Smoothing.FileHelper
                 CsvReader csvReader = new CsvReader(streamReader, config);
                 List<SplineInputData> splineData = csvReader.GetRecords<SplineInputData>().ToList();
                 dataGridView.DataSource = splineData;
+                
                 return dataGridView;
             }
             catch (Exception ex)
             {
-                MaterialMessageBox.Show(ex.Message);
+                dataGridView.Columns.Clear();
+                MaterialMessageBox.Show("Incorrect input data format");
             }
             return dataGridView;
         }
@@ -55,7 +57,7 @@ namespace MathematicalPackage_Smoothing.FileHelper
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MaterialMessageBox.Show("Failed to save data");
             }
         }
 

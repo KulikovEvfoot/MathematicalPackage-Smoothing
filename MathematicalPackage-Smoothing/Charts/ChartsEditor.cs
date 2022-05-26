@@ -2,6 +2,7 @@
 using LiveCharts;
 using LiveCharts.Defaults;
 using System.Collections.Generic;
+using System.Windows.Media;
 
 namespace MathematicalPackage_Smoothing.Charts
 {
@@ -19,14 +20,15 @@ namespace MathematicalPackage_Smoothing.Charts
             {
                 Title = legend,
                 Values = charts,
-                Fill = System.Windows.Media.Brushes.Transparent
+                Fill = Brushes.Transparent
             });
         }
 
         public void ShowSpline(LiveCharts.WinForms.CartesianChart cartesianChart)
         {
             cartesianChart.Series = new SeriesCollection();
-            cartesianChart.LegendLocation = LegendLocation.Right;
+            cartesianChart.LegendLocation = LegendLocation.Top;
+            cartesianChart.DefaultLegend.FontSize = 18;
             cartesianChart.DefaultLegend.Visibility = System.Windows.Visibility.Visible;
             cartesianChart.Series.AddRange(m_Line);
         }

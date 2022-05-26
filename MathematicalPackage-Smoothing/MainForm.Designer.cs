@@ -31,10 +31,10 @@ namespace MathematicalPackage_Smoothing
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MenuImageList = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -77,15 +77,15 @@ namespace MathematicalPackage_Smoothing
             this.LeftComboBox = new MaterialSkin.Controls.MaterialComboBox();
             this.ChooseFilePanel = new System.Windows.Forms.Panel();
             this.UploadDataButton = new MaterialSkin.Controls.MaterialButton();
-            this.SaveSplinePanel = new System.Windows.Forms.Panel();
-            this.SaveSplineButton = new MaterialSkin.Controls.MaterialButton();
-            this.CalculateSplinePanel = new System.Windows.Forms.Panel();
-            this.CalculateSplineButton = new MaterialSkin.Controls.MaterialButton();
             this.DsPanel = new System.Windows.Forms.TableLayoutPanel();
             this.Ds1TextBox = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.Ds2TextBox = new MaterialSkin.Controls.MaterialTextBox();
+            this.SaveSplinePanel = new System.Windows.Forms.Panel();
+            this.SaveSplineButton = new MaterialSkin.Controls.MaterialButton();
+            this.CalculateSplinePanel = new System.Windows.Forms.Panel();
+            this.CalculateSplineButton = new MaterialSkin.Controls.MaterialButton();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -113,9 +113,9 @@ namespace MathematicalPackage_Smoothing
             this.BoundaryConditionsPanel.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.ChooseFilePanel.SuspendLayout();
+            this.DsPanel.SuspendLayout();
             this.SaveSplinePanel.SuspendLayout();
             this.CalculateSplinePanel.SuspendLayout();
-            this.DsPanel.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -161,28 +161,31 @@ namespace MathematicalPackage_Smoothing
             // ChartTabPanel
             // 
             this.ChartTabPanel.ColumnCount = 1;
-            this.ChartTabPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.ChartTabPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ChartTabPanel.Controls.Add(this.ChartsPanel, 0, 0);
             this.ChartTabPanel.Controls.Add(this.ShowChartsPanel, 0, 1);
-            this.ChartTabPanel.Controls.Add(this.SaveChartPanel, 0, 2);
+            this.ChartTabPanel.Controls.Add(this.SaveChartPanel, 0, 3);
+            this.ChartTabPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChartTabPanel.Location = new System.Drawing.Point(1113, 3);
             this.ChartTabPanel.Name = "ChartTabPanel";
-            this.ChartTabPanel.RowCount = 3;
-            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 62.17009F));
-            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 37.82991F));
-            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 436F));
-            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ChartTabPanel.Size = new System.Drawing.Size(452, 778);
+            this.ChartTabPanel.RowCount = 4;
+            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 178F));
+            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ChartTabPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.ChartTabPanel.Size = new System.Drawing.Size(470, 792);
             this.ChartTabPanel.TabIndex = 4;
             // 
             // ChartsPanel
             // 
+            this.ChartsPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.ChartsPanel.ColumnCount = 1;
             this.ChartsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ChartsPanel.Controls.Add(this.materialLabel7, 0, 0);
             this.ChartsPanel.Controls.Add(this.OriginalCheckbox, 0, 1);
             this.ChartsPanel.Controls.Add(this.SmoothedCheckbox, 0, 2);
             this.ChartsPanel.Controls.Add(this.DerivativeCheckbox, 0, 3);
+            this.ChartsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChartsPanel.Location = new System.Drawing.Point(3, 3);
             this.ChartsPanel.Name = "ChartsPanel";
             this.ChartsPanel.RowCount = 4;
@@ -190,15 +193,16 @@ namespace MathematicalPackage_Smoothing
             this.ChartsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.ChartsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.ChartsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.ChartsPanel.Size = new System.Drawing.Size(402, 178);
+            this.ChartsPanel.Size = new System.Drawing.Size(464, 172);
             this.ChartsPanel.TabIndex = 7;
             // 
             // materialLabel7
             // 
+            this.materialLabel7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel7.Location = new System.Drawing.Point(3, 0);
+            this.materialLabel7.Location = new System.Drawing.Point(208, 3);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(47, 19);
@@ -255,10 +259,12 @@ namespace MathematicalPackage_Smoothing
             // 
             // ShowChartsPanel
             // 
+            this.ShowChartsPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.ShowChartsPanel.Controls.Add(this.ShowChartsButton);
-            this.ShowChartsPanel.Location = new System.Drawing.Point(3, 215);
+            this.ShowChartsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ShowChartsPanel.Location = new System.Drawing.Point(3, 181);
             this.ShowChartsPanel.Name = "ShowChartsPanel";
-            this.ShowChartsPanel.Size = new System.Drawing.Size(200, 100);
+            this.ShowChartsPanel.Size = new System.Drawing.Size(464, 44);
             this.ShowChartsPanel.TabIndex = 9;
             // 
             // ShowChartsButton
@@ -266,14 +272,15 @@ namespace MathematicalPackage_Smoothing
             this.ShowChartsButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ShowChartsButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.ShowChartsButton.Depth = 0;
+            this.ShowChartsButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ShowChartsButton.HighEmphasis = true;
             this.ShowChartsButton.Icon = null;
-            this.ShowChartsButton.Location = new System.Drawing.Point(40, 32);
+            this.ShowChartsButton.Location = new System.Drawing.Point(0, 0);
             this.ShowChartsButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ShowChartsButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.ShowChartsButton.Name = "ShowChartsButton";
             this.ShowChartsButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.ShowChartsButton.Size = new System.Drawing.Size(124, 36);
+            this.ShowChartsButton.Size = new System.Drawing.Size(464, 44);
             this.ShowChartsButton.TabIndex = 10;
             this.ShowChartsButton.Text = "Show Charts";
             this.ShowChartsButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -283,10 +290,12 @@ namespace MathematicalPackage_Smoothing
             // 
             // SaveChartPanel
             // 
+            this.SaveChartPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.SaveChartPanel.Controls.Add(this.SaveChartButton);
-            this.SaveChartPanel.Location = new System.Drawing.Point(3, 344);
+            this.SaveChartPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveChartPanel.Location = new System.Drawing.Point(3, 745);
             this.SaveChartPanel.Name = "SaveChartPanel";
-            this.SaveChartPanel.Size = new System.Drawing.Size(200, 100);
+            this.SaveChartPanel.Size = new System.Drawing.Size(464, 44);
             this.SaveChartPanel.TabIndex = 10;
             // 
             // SaveChartButton
@@ -294,14 +303,15 @@ namespace MathematicalPackage_Smoothing
             this.SaveChartButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SaveChartButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.SaveChartButton.Depth = 0;
+            this.SaveChartButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SaveChartButton.HighEmphasis = true;
             this.SaveChartButton.Icon = null;
-            this.SaveChartButton.Location = new System.Drawing.Point(46, 32);
+            this.SaveChartButton.Location = new System.Drawing.Point(0, 0);
             this.SaveChartButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.SaveChartButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.SaveChartButton.Name = "SaveChartButton";
             this.SaveChartButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.SaveChartButton.Size = new System.Drawing.Size(109, 36);
+            this.SaveChartButton.Size = new System.Drawing.Size(464, 44);
             this.SaveChartButton.TabIndex = 9;
             this.SaveChartButton.Text = "Save chart";
             this.SaveChartButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -312,9 +322,11 @@ namespace MathematicalPackage_Smoothing
             // MainCartesianChart
             // 
             this.MainCartesianChart.BackColor = System.Drawing.Color.White;
+            this.MainCartesianChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainCartesianChart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MainCartesianChart.Location = new System.Drawing.Point(3, 3);
             this.MainCartesianChart.Name = "MainCartesianChart";
-            this.MainCartesianChart.Size = new System.Drawing.Size(771, 778);
+            this.MainCartesianChart.Size = new System.Drawing.Size(1104, 792);
             this.MainCartesianChart.TabIndex = 5;
             this.MainCartesianChart.Text = "MainCartesianChart";
             // 
@@ -383,24 +395,24 @@ namespace MathematicalPackage_Smoothing
             this.ProcessedDataGridView.AllowUserToAddRows = false;
             this.ProcessedDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.ProcessedDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ProcessedDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.NullValue = null;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(195)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ProcessedDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ProcessedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(157)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProcessedDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(157)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProcessedDataGridView.DefaultCellStyle = dataGridViewCellStyle10;
             this.ProcessedDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProcessedDataGridView.Location = new System.Drawing.Point(555, 3);
             this.ProcessedDataGridView.Name = "ProcessedDataGridView";
@@ -414,24 +426,24 @@ namespace MathematicalPackage_Smoothing
             this.InputDataGridView.AllowUserToAddRows = false;
             this.InputDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.InputDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(157)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.InputDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.NullValue = null;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(157)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.InputDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.InputDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(157)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.InputDataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("a_FuturaOrtoLt", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(157)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.InputDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
             this.InputDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InputDataGridView.Location = new System.Drawing.Point(3, 3);
             this.InputDataGridView.Name = "InputDataGridView";
@@ -447,41 +459,46 @@ namespace MathematicalPackage_Smoothing
             this.tableLayoutPanel3.Controls.Add(this.SmoothingParameterPanel, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.BoundaryConditionsPanel, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.ChooseFilePanel, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.SaveSplinePanel, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.CalculateSplinePanel, 0, 4);
             this.tableLayoutPanel3.Controls.Add(this.DsPanel, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.SaveSplinePanel, 0, 6);
+            this.tableLayoutPanel3.Controls.Add(this.CalculateSplinePanel, 0, 5);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(1113, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 6;
+            this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 288F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 192F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(457, 776);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(470, 792);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // SmoothingParameterPanel
             // 
+            this.SmoothingParameterPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.SmoothingParameterPanel.ColumnCount = 1;
             this.SmoothingParameterPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.SmoothingParameterPanel.Controls.Add(this.materialLabel4, 0, 0);
             this.SmoothingParameterPanel.Controls.Add(this.tableLayoutPanel11, 0, 1);
+            this.SmoothingParameterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SmoothingParameterPanel.Location = new System.Drawing.Point(3, 213);
             this.SmoothingParameterPanel.Name = "SmoothingParameterPanel";
             this.SmoothingParameterPanel.RowCount = 2;
             this.SmoothingParameterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.SmoothingParameterPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.SmoothingParameterPanel.Size = new System.Drawing.Size(426, 243);
+            this.SmoothingParameterPanel.Size = new System.Drawing.Size(464, 282);
             this.SmoothingParameterPanel.TabIndex = 7;
             // 
             // materialLabel4
             // 
+            this.materialLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.Location = new System.Drawing.Point(3, 0);
+            this.materialLabel4.Location = new System.Drawing.Point(154, 3);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(155, 19);
@@ -492,17 +509,18 @@ namespace MathematicalPackage_Smoothing
             // 
             this.tableLayoutPanel11.ColumnCount = 2;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 277F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
             this.tableLayoutPanel11.Controls.Add(this.SubstitutionRadioButton, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.CalculateRadioButton, 0, 1);
             this.tableLayoutPanel11.Controls.Add(this.SubstitutionAPanel, 1, 0);
             this.tableLayoutPanel11.Controls.Add(this.CalculateAPanel, 1, 1);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 2;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.7835F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.2165F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(408, 194);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(458, 251);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // SubstitutionRadioButton
@@ -526,7 +544,7 @@ namespace MathematicalPackage_Smoothing
             // 
             this.CalculateRadioButton.AutoSize = true;
             this.CalculateRadioButton.Depth = 0;
-            this.CalculateRadioButton.Location = new System.Drawing.Point(0, 82);
+            this.CalculateRadioButton.Location = new System.Drawing.Point(0, 107);
             this.CalculateRadioButton.Margin = new System.Windows.Forms.Padding(0);
             this.CalculateRadioButton.MouseLocation = new System.Drawing.Point(-1, -1);
             this.CalculateRadioButton.MouseState = MaterialSkin.MouseState.HOVER;
@@ -542,9 +560,10 @@ namespace MathematicalPackage_Smoothing
             // SubstitutionAPanel
             // 
             this.SubstitutionAPanel.Controls.Add(this.SubstitutionATextBox);
+            this.SubstitutionAPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SubstitutionAPanel.Location = new System.Drawing.Point(134, 3);
             this.SubstitutionAPanel.Name = "SubstitutionAPanel";
-            this.SubstitutionAPanel.Size = new System.Drawing.Size(200, 63);
+            this.SubstitutionAPanel.Size = new System.Drawing.Size(321, 101);
             this.SubstitutionAPanel.TabIndex = 2;
             // 
             // SubstitutionATextBox
@@ -552,14 +571,15 @@ namespace MathematicalPackage_Smoothing
             this.SubstitutionATextBox.AnimateReadOnly = false;
             this.SubstitutionATextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.SubstitutionATextBox.Depth = 0;
+            this.SubstitutionATextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SubstitutionATextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.SubstitutionATextBox.LeadingIcon = null;
-            this.SubstitutionATextBox.Location = new System.Drawing.Point(3, 3);
+            this.SubstitutionATextBox.Location = new System.Drawing.Point(0, 0);
             this.SubstitutionATextBox.MaxLength = 50;
             this.SubstitutionATextBox.MouseState = MaterialSkin.MouseState.OUT;
             this.SubstitutionATextBox.Multiline = false;
             this.SubstitutionATextBox.Name = "SubstitutionATextBox";
-            this.SubstitutionATextBox.Size = new System.Drawing.Size(100, 50);
+            this.SubstitutionATextBox.Size = new System.Drawing.Size(321, 50);
             this.SubstitutionATextBox.TabIndex = 0;
             this.SubstitutionATextBox.Text = "";
             this.SubstitutionATextBox.TrailingIcon = null;
@@ -574,20 +594,22 @@ namespace MathematicalPackage_Smoothing
             this.CalculateAPanel.Controls.Add(this.MaxATextBox, 1, 1);
             this.CalculateAPanel.Controls.Add(this.MinATextBox, 0, 1);
             this.CalculateAPanel.Controls.Add(this.materialLabel5, 0, 0);
-            this.CalculateAPanel.Location = new System.Drawing.Point(134, 85);
+            this.CalculateAPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalculateAPanel.Location = new System.Drawing.Point(134, 110);
             this.CalculateAPanel.Name = "CalculateAPanel";
             this.CalculateAPanel.RowCount = 2;
             this.CalculateAPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.CalculateAPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.CalculateAPanel.Size = new System.Drawing.Size(246, 94);
+            this.CalculateAPanel.Size = new System.Drawing.Size(321, 138);
             this.CalculateAPanel.TabIndex = 3;
             // 
             // materialLabel6
             // 
+            this.materialLabel6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.Location = new System.Drawing.Point(126, 0);
+            this.materialLabel6.Location = new System.Drawing.Point(224, 3);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(32, 19);
@@ -599,14 +621,15 @@ namespace MathematicalPackage_Smoothing
             this.MaxATextBox.AnimateReadOnly = false;
             this.MaxATextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MaxATextBox.Depth = 0;
+            this.MaxATextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MaxATextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.MaxATextBox.LeadingIcon = null;
-            this.MaxATextBox.Location = new System.Drawing.Point(126, 28);
+            this.MaxATextBox.Location = new System.Drawing.Point(163, 28);
             this.MaxATextBox.MaxLength = 50;
             this.MaxATextBox.MouseState = MaterialSkin.MouseState.OUT;
             this.MaxATextBox.Multiline = false;
             this.MaxATextBox.Name = "MaxATextBox";
-            this.MaxATextBox.Size = new System.Drawing.Size(94, 50);
+            this.MaxATextBox.Size = new System.Drawing.Size(155, 50);
             this.MaxATextBox.TabIndex = 0;
             this.MaxATextBox.Text = "";
             this.MaxATextBox.TrailingIcon = null;
@@ -617,6 +640,7 @@ namespace MathematicalPackage_Smoothing
             this.MinATextBox.AnimateReadOnly = false;
             this.MinATextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MinATextBox.Depth = 0;
+            this.MinATextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MinATextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.MinATextBox.LeadingIcon = null;
             this.MinATextBox.Location = new System.Drawing.Point(3, 28);
@@ -624,7 +648,7 @@ namespace MathematicalPackage_Smoothing
             this.MinATextBox.MouseState = MaterialSkin.MouseState.OUT;
             this.MinATextBox.Multiline = false;
             this.MinATextBox.Name = "MinATextBox";
-            this.MinATextBox.Size = new System.Drawing.Size(94, 50);
+            this.MinATextBox.Size = new System.Drawing.Size(154, 50);
             this.MinATextBox.TabIndex = 1;
             this.MinATextBox.Text = "";
             this.MinATextBox.TrailingIcon = null;
@@ -632,10 +656,11 @@ namespace MathematicalPackage_Smoothing
             // 
             // materialLabel5
             // 
+            this.materialLabel5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.Location = new System.Drawing.Point(3, 0);
+            this.materialLabel5.Location = new System.Drawing.Point(66, 3);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(28, 19);
@@ -644,24 +669,27 @@ namespace MathematicalPackage_Smoothing
             // 
             // BoundaryConditionsPanel
             // 
+            this.BoundaryConditionsPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.BoundaryConditionsPanel.ColumnCount = 1;
             this.BoundaryConditionsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.BoundaryConditionsPanel.Controls.Add(this.materialLabel1, 0, 0);
             this.BoundaryConditionsPanel.Controls.Add(this.tableLayoutPanel10, 0, 1);
+            this.BoundaryConditionsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BoundaryConditionsPanel.Location = new System.Drawing.Point(3, 53);
             this.BoundaryConditionsPanel.Name = "BoundaryConditionsPanel";
             this.BoundaryConditionsPanel.RowCount = 2;
             this.BoundaryConditionsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.BoundaryConditionsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.BoundaryConditionsPanel.Size = new System.Drawing.Size(417, 146);
+            this.BoundaryConditionsPanel.Size = new System.Drawing.Size(464, 154);
             this.BoundaryConditionsPanel.TabIndex = 3;
             // 
             // materialLabel1
             // 
+            this.materialLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(3, 0);
+            this.materialLabel1.Location = new System.Drawing.Point(158, 3);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(147, 19);
@@ -677,20 +705,22 @@ namespace MathematicalPackage_Smoothing
             this.tableLayoutPanel10.Controls.Add(this.materialLabel2, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.RightComboBox, 1, 1);
             this.tableLayoutPanel10.Controls.Add(this.LeftComboBox, 0, 1);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel10.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(411, 96);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(458, 123);
             this.tableLayoutPanel10.TabIndex = 1;
             // 
             // materialLabel3
             // 
+            this.materialLabel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel3.Location = new System.Drawing.Point(208, 0);
+            this.materialLabel3.Location = new System.Drawing.Point(324, 3);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(38, 19);
@@ -699,10 +729,11 @@ namespace MathematicalPackage_Smoothing
             // 
             // materialLabel2
             // 
+            this.materialLabel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(3, 0);
+            this.materialLabel2.Location = new System.Drawing.Point(100, 3);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(29, 19);
@@ -714,6 +745,7 @@ namespace MathematicalPackage_Smoothing
             this.RightComboBox.AutoResize = false;
             this.RightComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.RightComboBox.Depth = 0;
+            this.RightComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RightComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.RightComboBox.DropDownHeight = 174;
             this.RightComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -723,11 +755,11 @@ namespace MathematicalPackage_Smoothing
             this.RightComboBox.FormattingEnabled = true;
             this.RightComboBox.IntegralHeight = false;
             this.RightComboBox.ItemHeight = 43;
-            this.RightComboBox.Location = new System.Drawing.Point(208, 28);
+            this.RightComboBox.Location = new System.Drawing.Point(232, 28);
             this.RightComboBox.MaxDropDownItems = 4;
             this.RightComboBox.MouseState = MaterialSkin.MouseState.OUT;
             this.RightComboBox.Name = "RightComboBox";
-            this.RightComboBox.Size = new System.Drawing.Size(118, 49);
+            this.RightComboBox.Size = new System.Drawing.Size(223, 49);
             this.RightComboBox.StartIndex = 0;
             this.RightComboBox.TabIndex = 4;
             // 
@@ -736,6 +768,7 @@ namespace MathematicalPackage_Smoothing
             this.LeftComboBox.AutoResize = false;
             this.LeftComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.LeftComboBox.Depth = 0;
+            this.LeftComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LeftComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.LeftComboBox.DropDownHeight = 174;
             this.LeftComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -749,16 +782,17 @@ namespace MathematicalPackage_Smoothing
             this.LeftComboBox.MaxDropDownItems = 4;
             this.LeftComboBox.MouseState = MaterialSkin.MouseState.OUT;
             this.LeftComboBox.Name = "LeftComboBox";
-            this.LeftComboBox.Size = new System.Drawing.Size(121, 49);
+            this.LeftComboBox.Size = new System.Drawing.Size(223, 49);
             this.LeftComboBox.StartIndex = 0;
             this.LeftComboBox.TabIndex = 3;
             // 
             // ChooseFilePanel
             // 
             this.ChooseFilePanel.Controls.Add(this.UploadDataButton);
+            this.ChooseFilePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChooseFilePanel.Location = new System.Drawing.Point(3, 3);
             this.ChooseFilePanel.Name = "ChooseFilePanel";
-            this.ChooseFilePanel.Size = new System.Drawing.Size(200, 44);
+            this.ChooseFilePanel.Size = new System.Drawing.Size(464, 44);
             this.ChooseFilePanel.TabIndex = 8;
             // 
             // UploadDataButton
@@ -766,14 +800,15 @@ namespace MathematicalPackage_Smoothing
             this.UploadDataButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.UploadDataButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.UploadDataButton.Depth = 0;
+            this.UploadDataButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.UploadDataButton.HighEmphasis = true;
             this.UploadDataButton.Icon = null;
-            this.UploadDataButton.Location = new System.Drawing.Point(40, 2);
+            this.UploadDataButton.Location = new System.Drawing.Point(0, 0);
             this.UploadDataButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.UploadDataButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.UploadDataButton.Name = "UploadDataButton";
             this.UploadDataButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.UploadDataButton.Size = new System.Drawing.Size(119, 36);
+            this.UploadDataButton.Size = new System.Drawing.Size(464, 44);
             this.UploadDataButton.TabIndex = 0;
             this.UploadDataButton.Text = "upload data";
             this.UploadDataButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -781,64 +816,9 @@ namespace MathematicalPackage_Smoothing
             this.UploadDataButton.UseVisualStyleBackColor = true;
             this.UploadDataButton.Click += new System.EventHandler(this.UploadDataButton_Click);
             // 
-            // SaveSplinePanel
-            // 
-            this.SaveSplinePanel.Controls.Add(this.SaveSplineButton);
-            this.SaveSplinePanel.Location = new System.Drawing.Point(3, 743);
-            this.SaveSplinePanel.Name = "SaveSplinePanel";
-            this.SaveSplinePanel.Size = new System.Drawing.Size(357, 30);
-            this.SaveSplinePanel.TabIndex = 5;
-            // 
-            // SaveSplineButton
-            // 
-            this.SaveSplineButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SaveSplineButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.SaveSplineButton.Depth = 0;
-            this.SaveSplineButton.HighEmphasis = true;
-            this.SaveSplineButton.Icon = null;
-            this.SaveSplineButton.Location = new System.Drawing.Point(21, 3);
-            this.SaveSplineButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.SaveSplineButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.SaveSplineButton.Name = "SaveSplineButton";
-            this.SaveSplineButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.SaveSplineButton.Size = new System.Drawing.Size(111, 36);
-            this.SaveSplineButton.TabIndex = 1;
-            this.SaveSplineButton.Text = "Save Spline";
-            this.SaveSplineButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.SaveSplineButton.UseAccentColor = false;
-            this.SaveSplineButton.UseVisualStyleBackColor = true;
-            this.SaveSplineButton.Click += new System.EventHandler(this.SaveSplineButton_Click);
-            // 
-            // CalculateSplinePanel
-            // 
-            this.CalculateSplinePanel.Controls.Add(this.CalculateSplineButton);
-            this.CalculateSplinePanel.Location = new System.Drawing.Point(3, 693);
-            this.CalculateSplinePanel.Name = "CalculateSplinePanel";
-            this.CalculateSplinePanel.Size = new System.Drawing.Size(300, 44);
-            this.CalculateSplinePanel.TabIndex = 4;
-            // 
-            // CalculateSplineButton
-            // 
-            this.CalculateSplineButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CalculateSplineButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.CalculateSplineButton.Depth = 0;
-            this.CalculateSplineButton.HighEmphasis = true;
-            this.CalculateSplineButton.Icon = null;
-            this.CalculateSplineButton.Location = new System.Drawing.Point(21, 4);
-            this.CalculateSplineButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.CalculateSplineButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.CalculateSplineButton.Name = "CalculateSplineButton";
-            this.CalculateSplineButton.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.CalculateSplineButton.Size = new System.Drawing.Size(156, 36);
-            this.CalculateSplineButton.TabIndex = 1;
-            this.CalculateSplineButton.Text = "Calculate Spline";
-            this.CalculateSplineButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.CalculateSplineButton.UseAccentColor = false;
-            this.CalculateSplineButton.UseVisualStyleBackColor = true;
-            this.CalculateSplineButton.Click += new System.EventHandler(this.CalculateSplineButton_Click);
-            // 
             // DsPanel
             // 
+            this.DsPanel.BackColor = System.Drawing.Color.Gainsboro;
             this.DsPanel.ColumnCount = 2;
             this.DsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.DsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -846,12 +826,13 @@ namespace MathematicalPackage_Smoothing
             this.DsPanel.Controls.Add(this.materialLabel8, 0, 0);
             this.DsPanel.Controls.Add(this.materialLabel9, 1, 0);
             this.DsPanel.Controls.Add(this.Ds2TextBox, 1, 1);
+            this.DsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DsPanel.Location = new System.Drawing.Point(3, 501);
             this.DsPanel.Name = "DsPanel";
             this.DsPanel.RowCount = 2;
             this.DsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.DsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DsPanel.Size = new System.Drawing.Size(404, 97);
+            this.DsPanel.Size = new System.Drawing.Size(464, 186);
             this.DsPanel.TabIndex = 9;
             // 
             // Ds1TextBox
@@ -859,6 +840,7 @@ namespace MathematicalPackage_Smoothing
             this.Ds1TextBox.AnimateReadOnly = false;
             this.Ds1TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Ds1TextBox.Depth = 0;
+            this.Ds1TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Ds1TextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.Ds1TextBox.LeadingIcon = null;
             this.Ds1TextBox.Location = new System.Drawing.Point(3, 28);
@@ -866,17 +848,18 @@ namespace MathematicalPackage_Smoothing
             this.Ds1TextBox.MouseState = MaterialSkin.MouseState.OUT;
             this.Ds1TextBox.Multiline = false;
             this.Ds1TextBox.Name = "Ds1TextBox";
-            this.Ds1TextBox.Size = new System.Drawing.Size(94, 50);
+            this.Ds1TextBox.Size = new System.Drawing.Size(226, 50);
             this.Ds1TextBox.TabIndex = 4;
             this.Ds1TextBox.Text = "";
             this.Ds1TextBox.TrailingIcon = null;
             // 
             // materialLabel8
             // 
+            this.materialLabel8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel8.AutoSize = true;
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel8.Location = new System.Drawing.Point(3, 0);
+            this.materialLabel8.Location = new System.Drawing.Point(102, 3);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(27, 19);
@@ -885,10 +868,11 @@ namespace MathematicalPackage_Smoothing
             // 
             // materialLabel9
             // 
+            this.materialLabel9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.materialLabel9.AutoSize = true;
             this.materialLabel9.Depth = 0;
             this.materialLabel9.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel9.Location = new System.Drawing.Point(205, 0);
+            this.materialLabel9.Location = new System.Drawing.Point(334, 3);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
             this.materialLabel9.Size = new System.Drawing.Size(27, 19);
@@ -900,17 +884,78 @@ namespace MathematicalPackage_Smoothing
             this.Ds2TextBox.AnimateReadOnly = false;
             this.Ds2TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Ds2TextBox.Depth = 0;
+            this.Ds2TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Ds2TextBox.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.Ds2TextBox.LeadingIcon = null;
-            this.Ds2TextBox.Location = new System.Drawing.Point(205, 28);
+            this.Ds2TextBox.Location = new System.Drawing.Point(235, 28);
             this.Ds2TextBox.MaxLength = 50;
             this.Ds2TextBox.MouseState = MaterialSkin.MouseState.OUT;
             this.Ds2TextBox.Multiline = false;
             this.Ds2TextBox.Name = "Ds2TextBox";
-            this.Ds2TextBox.Size = new System.Drawing.Size(94, 50);
+            this.Ds2TextBox.Size = new System.Drawing.Size(226, 50);
             this.Ds2TextBox.TabIndex = 3;
             this.Ds2TextBox.Text = "";
             this.Ds2TextBox.TrailingIcon = null;
+            // 
+            // SaveSplinePanel
+            // 
+            this.SaveSplinePanel.Controls.Add(this.SaveSplineButton);
+            this.SaveSplinePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveSplinePanel.Location = new System.Drawing.Point(3, 745);
+            this.SaveSplinePanel.Name = "SaveSplinePanel";
+            this.SaveSplinePanel.Size = new System.Drawing.Size(464, 44);
+            this.SaveSplinePanel.TabIndex = 5;
+            // 
+            // SaveSplineButton
+            // 
+            this.SaveSplineButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SaveSplineButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.SaveSplineButton.Depth = 0;
+            this.SaveSplineButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SaveSplineButton.HighEmphasis = true;
+            this.SaveSplineButton.Icon = null;
+            this.SaveSplineButton.Location = new System.Drawing.Point(0, 0);
+            this.SaveSplineButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.SaveSplineButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.SaveSplineButton.Name = "SaveSplineButton";
+            this.SaveSplineButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.SaveSplineButton.Size = new System.Drawing.Size(464, 44);
+            this.SaveSplineButton.TabIndex = 1;
+            this.SaveSplineButton.Text = "Save Spline";
+            this.SaveSplineButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.SaveSplineButton.UseAccentColor = false;
+            this.SaveSplineButton.UseVisualStyleBackColor = true;
+            this.SaveSplineButton.Click += new System.EventHandler(this.SaveSplineButton_Click);
+            // 
+            // CalculateSplinePanel
+            // 
+            this.CalculateSplinePanel.Controls.Add(this.CalculateSplineButton);
+            this.CalculateSplinePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalculateSplinePanel.Location = new System.Drawing.Point(3, 695);
+            this.CalculateSplinePanel.Name = "CalculateSplinePanel";
+            this.CalculateSplinePanel.Size = new System.Drawing.Size(464, 44);
+            this.CalculateSplinePanel.TabIndex = 4;
+            // 
+            // CalculateSplineButton
+            // 
+            this.CalculateSplineButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CalculateSplineButton.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.CalculateSplineButton.Depth = 0;
+            this.CalculateSplineButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CalculateSplineButton.HighEmphasis = true;
+            this.CalculateSplineButton.Icon = null;
+            this.CalculateSplineButton.Location = new System.Drawing.Point(0, 0);
+            this.CalculateSplineButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.CalculateSplineButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CalculateSplineButton.Name = "CalculateSplineButton";
+            this.CalculateSplineButton.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.CalculateSplineButton.Size = new System.Drawing.Size(464, 44);
+            this.CalculateSplineButton.TabIndex = 1;
+            this.CalculateSplineButton.Text = "Calculate Spline";
+            this.CalculateSplineButton.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.CalculateSplineButton.UseAccentColor = false;
+            this.CalculateSplineButton.UseVisualStyleBackColor = true;
+            this.CalculateSplineButton.Click += new System.EventHandler(this.CalculateSplineButton_Click);
             // 
             // tabPage5
             // 
@@ -1037,12 +1082,12 @@ namespace MathematicalPackage_Smoothing
             this.tableLayoutPanel10.PerformLayout();
             this.ChooseFilePanel.ResumeLayout(false);
             this.ChooseFilePanel.PerformLayout();
+            this.DsPanel.ResumeLayout(false);
+            this.DsPanel.PerformLayout();
             this.SaveSplinePanel.ResumeLayout(false);
             this.SaveSplinePanel.PerformLayout();
             this.CalculateSplinePanel.ResumeLayout(false);
             this.CalculateSplinePanel.PerformLayout();
-            this.DsPanel.ResumeLayout(false);
-            this.DsPanel.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
