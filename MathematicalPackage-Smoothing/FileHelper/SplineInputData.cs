@@ -2,9 +2,9 @@
 {
     public class SplineInputData
     {
-        public string n { get; set; }
-        public string x { get; set; }
-        public string p { get; set; }
-        public string f { get; set; } 
+        public string N { get; set; }
+        public string X { get; set; }
+        public string P { get; set; }
+        public string F { get; set; } 
     }
 }

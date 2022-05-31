@@ -32,7 +32,7 @@ namespace MathematicalPackage_Smoothing.FileHelper
             return dataGridView;
         }
 
-        public void SaveCsvFile(string filePath, DataGridView dataGridView, float[] f, float a)
+        public void SaveCsvFile(string filePath, DataGridView dataGridView, float[] X, float[] F, float[] Fn)
         {
             try
             {
@@ -43,14 +43,11 @@ namespace MathematicalPackage_Smoothing.FileHelper
 
                     writer.WriteHeader(typeof(SplineOutputData));
                     writer.NextRecord();
-
-                    writer.WriteRecord(f[0]);
-                    writer.WriteRecord(a);
-                    writer.NextRecord();
-
-                    for (int i = 1; i < f.Length; i++)
+                    for (int i = 0; i < X.Length; i++)
                     {
-                        writer.WriteRecord(f[i]);
+                        writer.WriteRecord(X[i]);
+                        writer.WriteRecord(F[i]);
+                        writer.WriteRecord(Fn[i]);
                         writer.NextRecord();
                     }
                 }

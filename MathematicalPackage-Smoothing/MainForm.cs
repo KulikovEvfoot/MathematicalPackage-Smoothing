@@ -238,13 +238,20 @@ namespace MathematicalPackage_Smoothing
         private void ShowSmoothSpline()
         {
             ProcessedDataGridView.Columns.Clear();
-            ProcessedDataGridView.Columns.Add("f", "f");
-            ProcessedDataGridView.Columns.Add("a", "a");
-            foreach (var item in m_F)
+            ProcessedDataGridView.Columns.Add("X", "X");
+            ProcessedDataGridView.Columns.Add("F", "F");
+            ProcessedDataGridView.Columns.Add("Fn", "Fn");
+            for (int i = 0; i < m_X.Length; i++)
             {
-                ProcessedDataGridView.Rows.Add(item);
+                ProcessedDataGridView.Rows.Add(m_X[i]);
+                ProcessedDataGridView.Rows[i].Cells[1].Value = m_F[i];
+                ProcessedDataGridView.Rows[i].Cells[2].Value = m_Spline[i];
             }
-            ProcessedDataGridView.Rows[0].Cells[1].Value = m_A;
+
+            if (CalculateRadioButton.Checked)
+            {
+                FoundValueTextBox.Text = m_A.ToString();
+            }
         }
 
         private bool CalculatingSpline()
@@ -354,7 +361,7 @@ namespace MathematicalPackage_Smoothing
             {
                 using (CsvConnector csvOpen = new CsvConnector())
                 {
-                    csvOpen.SaveCsvFile(filePath, ProcessedDataGridView, m_F, m_A);
+                    csvOpen.SaveCsvFile(filePath, ProcessedDataGridView, m_X, m_F, m_Spline);
                 }
             }
         }
@@ -390,6 +397,7 @@ namespace MathematicalPackage_Smoothing
             bmp.Save(filePath, ImageFormat.Png);
         }
 
+
         private void SubstitutionATextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -399,7 +407,7 @@ namespace MathematicalPackage_Smoothing
             }
         }
 
-        private void MinATextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void MinATextBox_KeyPress_1(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             char number = e.KeyChar;
             if (!Char.IsDigit(number) && number != 8 && number != 44)
@@ -408,7 +416,25 @@ namespace MathematicalPackage_Smoothing
             }
         }
 
-        private void MaxATextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        private void MaxATextBox_KeyPress_1(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8 && number != 44)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Ds1TextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8 && number != 44)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Ds2TextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
         {
             char number = e.KeyChar;
             if (!Char.IsDigit(number) && number != 8 && number != 44)
@@ -424,6 +450,7 @@ namespace MathematicalPackage_Smoothing
             MaxATextBox.Clear();
             Ds1TextBox.Clear();
             Ds2TextBox.Clear();
+            FoundValueTextBox.Clear();
             SubstitutionRadioButton.Checked = false;
             CalculateRadioButton.Checked = false;
             OriginalCheckbox.Checked = false;
@@ -454,5 +481,7 @@ namespace MathematicalPackage_Smoothing
         private string m_Type_1 = "Type 1";
         private string m_Type_2 = "Type 2";
         private string m_Type_2_0 = "Type 2.0";
+
+      
     }
 }

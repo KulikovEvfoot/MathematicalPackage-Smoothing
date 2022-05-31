@@ -2,7 +2,8 @@
 {
     class SplineOutputData
     {
-        public string f { get; set; }
-        public string a { get; set; }
+        public string X { get; set; }
+        public string F { get; set; }
+        public string Fn { get; set; }
     }
 }
