@@ -95,11 +95,6 @@ namespace MathematicalPackage_Smoothing
             this.FoundValueTextBox = new MaterialSkin.Controls.MaterialTextBox();
             this.MinATextBox = new MaterialSkin.Controls.MaterialTextBox();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.Doc = new MaterialSkin.Controls.MaterialButton();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -128,10 +123,6 @@ namespace MathematicalPackage_Smoothing
             this.SubstitutionAPanel.SuspendLayout();
             this.CalculateAPanel.SuspendLayout();
             this.CalculateAPanel2.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.tableLayoutPanel4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -347,7 +338,6 @@ namespace MathematicalPackage_Smoothing
             // 
             this.MenuMaterialTabControl.Controls.Add(this.tabPage1);
             this.MenuMaterialTabControl.Controls.Add(this.tabPage2);
-            this.MenuMaterialTabControl.Controls.Add(this.tabPage5);
             this.MenuMaterialTabControl.Controls.Add(this.tabPage3);
             this.MenuMaterialTabControl.Depth = 0;
             this.MenuMaterialTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1112,75 +1102,6 @@ namespace MathematicalPackage_Smoothing
             this.materialLabel10.TabIndex = 4;
             this.materialLabel10.Text = "Found value";
             // 
-            // tabPage5
-            // 
-            this.tabPage5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.tabPage5.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage5.ImageKey = "icons8-matrix-desktop-50.png";
-            this.tabPage5.Location = new System.Drawing.Point(4, 31);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1586, 798);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Spline";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1586, 798);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(1262, 792);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.Doc, 0, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(1271, 3);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(312, 792);
-            this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // Doc
-            // 
-            this.Doc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Doc.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.Doc.Depth = 0;
-            this.Doc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Doc.HighEmphasis = true;
-            this.Doc.Icon = null;
-            this.Doc.Location = new System.Drawing.Point(4, 6);
-            this.Doc.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.Doc.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Doc.Name = "Doc";
-            this.Doc.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.Doc.Size = new System.Drawing.Size(304, 67);
-            this.Doc.TabIndex = 3;
-            this.Doc.Text = "doc";
-            this.Doc.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.Doc.UseAccentColor = false;
-            this.Doc.UseVisualStyleBackColor = true;
-            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
@@ -1262,11 +1183,6 @@ namespace MathematicalPackage_Smoothing
             this.CalculateAPanel.PerformLayout();
             this.CalculateAPanel2.ResumeLayout(false);
             this.CalculateAPanel2.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1277,14 +1193,9 @@ namespace MathematicalPackage_Smoothing
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private MaterialSkin.Controls.MaterialTabControl MenuMaterialTabControl;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private MaterialSkin.Controls.MaterialButton Doc;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
         private System.Windows.Forms.DataGridView InputDataGridView;

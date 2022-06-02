@@ -1,45 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="MathematicalPackage_Smoothing.Caclulations.SplineCoefficients.InitCoefficients" Collapsed="true">
-    <Position X="8.5" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAIAAAAAEAAAAAAAASAAAAAAACAAAAQAAAAAAQACA=</HashCode>
-      <FileName>Caclulations\SplineCoefficients\InitCoefficients.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MathematicalPackage_Smoothing.Caclulations.SplineCoefficients.CalculateSpline" Collapsed="true">
-    <Position X="10.75" Y="4.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAEAEA=</HashCode>
-      <FileName>Caclulations\SplineCoefficients\CalculateSpline.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MathematicalPackage_Smoothing.Caclulations.Matrices.MatrixInputData" Collapsed="true">
-    <Position X="5" Y="3" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
-      <FileName>Caclulations\Matrices\MatrixInputData.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MathematicalPackage_Smoothing.Caclulations.Matrices.MatrixCalculation" Collapsed="true">
-    <Position X="5" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAgCACIAQABJEABABEAAAAAAAgAACAAAAgAAAAIGAA=</HashCode>
-      <FileName>Caclulations\Matrices\MatrixCalculation.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="MathematicalPackage_Smoothing.Caclulations.Matrices.InitMatrix" Collapsed="true">
-    <Position X="2.25" Y="4.25" Width="1.5" />
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.Matrices.InitMatrix">
+    <Position X="17" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAIAAIACAAAAACAoAAAIAAACgAAgA=</HashCode>
       <FileName>Caclulations\Matrices\InitMatrix.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MathematicalPackage_Smoothing.Caclulations.Vectors.FormVector" Collapsed="true">
-    <Position X="6.25" Y="6.75" Width="1.5" />
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.Matrices.MatrixCalculation">
+    <Position X="12.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgCACIAQABJEABABEAAAAAAAgAACAAAAgAAAAIGAA=</HashCode>
+      <FileName>Caclulations\Matrices\MatrixCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.Matrices.MatrixInputData">
+    <Position X="12.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Caclulations\Matrices\MatrixInputData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.SmoothingParameter.CalculateA">
+    <Position X="19.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caclulations\SmoothingParameter\CalculateA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.SmoothingParameter.CalculateP">
+    <Position X="19.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Caclulations\SmoothingParameter\CalculateP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.SplineCoefficients.InitCoefficients">
+    <Position X="21.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAiAABAACAAAAQAAAAAAAACA=</HashCode>
+      <FileName>Caclulations\SplineCoefficients\InitCoefficients.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.Vectors.FormVector">
+    <Position X="14.75" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Caclulations\Vectors\FormVector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Charts.ChartsEditor">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Charts\ChartsEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Design.FormDesigner">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Design\FormDesigner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.FileHelper.CsvConnector" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileHelper\CsvConnector.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.FileHelper.SplineInputData">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBBAQAA=</HashCode>
+      <FileName>FileHelper\SplineInputData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.FileHelper.SplineOutputData">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQAA=</HashCode>
+      <FileName>FileHelper\SplineOutputData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.FileHelper.WindowOpener">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACEAABAAAAAAAAAA=</HashCode>
+      <FileName>FileHelper\WindowOpener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MathematicalPackage_Smoothing.Caclulations.SplineCoefficients.CalculateSpline">
+    <Position X="21.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAEA=</HashCode>
+      <FileName>Caclulations\SplineCoefficients\CalculateSpline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
