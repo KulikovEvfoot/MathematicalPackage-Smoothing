@@ -98,22 +98,22 @@ namespace MathematicalPackage_Smoothing
             {
                 if (Ds1TextBox.Text.Trim() == "")
                 {
-                    errors += "Field 'ds1' must be filled in! \n";
+                    errors += "Field 'first derivative' must be filled in! \n";
                 }
                 else if (!float.TryParse(Ds1TextBox.Text, out float result))
                 {
-                    errors += "The 'ds1' field is filled in incorrectly! \n";
+                    errors += "The 'first derivative' field is filled in incorrectly! \n";
                 }
             }
             if (RightComboBox.Text.Trim() == m_Type_1)
             {
                 if (Ds2TextBox.Text.Trim() == "")
                 {
-                    errors += "Field 'ds2' must be filled in! \n";
+                    errors += "Field 'last derivative' must be filled in! \n";
                 }
                 else if (!float.TryParse(Ds2TextBox.Text, out float result))
                 {
-                    errors += "The 'ds2' field is filled in incorrectly! \n";
+                    errors += "The 'last derivative' field is filled in incorrectly! \n";
                 }
             }
 
@@ -482,6 +482,9 @@ namespace MathematicalPackage_Smoothing
         private string m_Type_2 = "Type 2";
         private string m_Type_2_0 = "Type 2.0";
 
-      
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            tableLayoutPanel6.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
+        }
     }
 }

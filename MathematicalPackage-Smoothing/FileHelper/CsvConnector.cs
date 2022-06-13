@@ -26,6 +26,7 @@ namespace MathematicalPackage_Smoothing.FileHelper
             }
             catch (Exception ex)
             {
+                MaterialMessageBox.Show(ex.ToString());
                 dataGridView.Columns.Clear();
                 MaterialMessageBox.Show("Incorrect input data format");
             }
