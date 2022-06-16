@@ -88,10 +88,18 @@ namespace MathematicalPackage_Smoothing
                 if (MinATextBox.Text.Trim() == "")
                 {
                     errors += "Field 'min' must be filled in! \n";
-                }   
+                }
+                else if (!float.TryParse(MinATextBox.Text, out float result))
+                {
+                    errors += "The 'min' field is filled in incorrectly! \n";
+                }
                 if (MaxATextBox.Text.Trim() == "")
                 {
                     errors += "Field 'max' must be filled in! \n";
+                }
+                else if (!float.TryParse(MaxATextBox.Text, out float result))
+                {
+                    errors += "The 'max' field is filled in incorrectly! \n";
                 }
             }
             if (LeftComboBox.Text.Trim() == m_Type_1)
@@ -372,15 +380,15 @@ namespace MathematicalPackage_Smoothing
 
             if (OriginalCheckbox.Checked)
             {
-                chartsEditor.InputChart(m_F, m_X, "Original");
+                chartsEditor.InputChart(m_F, m_X, "Original", System.Windows.Media.Brushes.Blue);
             }
             if (SmoothedCheckbox.Checked)
             {
-                chartsEditor.InputChart(m_Spline, m_X, "Smoothing");
+                chartsEditor.InputChart(m_Spline, m_X, "Smoothing", System.Windows.Media.Brushes.Red);
             }
             if (DerivativeCheckbox.Checked)
             {
-                chartsEditor.InputChart(m_D1Spline, m_X, "Derivative");
+                chartsEditor.InputChart(m_D1Spline, m_X, "Derivative", System.Windows.Media.Brushes.Orange);
             }
 
             chartsEditor.ShowSpline(MainCartesianChart);
@@ -392,56 +400,15 @@ namespace MathematicalPackage_Smoothing
         {
             WindowOpener saveFile = new WindowOpener();
             string filePath = saveFile.SavePngFile();
+            if (string.IsNullOrEmpty(filePath))
+            {
+                return;
+            }
             Bitmap bmp = new Bitmap(MainCartesianChart.Width, MainCartesianChart.Height);
             MainCartesianChart.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
             bmp.Save(filePath, ImageFormat.Png);
         }
 
-
-        private void SubstitutionATextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void MinATextBox_KeyPress_1(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void MaxATextBox_KeyPress_1(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void Ds1TextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void Ds2TextBox_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 8 && number != 44)
-            {
-                e.Handled = true;
-            }
-        }
 
         private void ClearFields()
         {

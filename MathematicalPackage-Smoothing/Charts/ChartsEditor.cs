@@ -8,7 +8,7 @@ namespace MathematicalPackage_Smoothing.Charts
 {
     public class ChartsEditor
     {
-        public void InputChart(float[] spline, float[] steps, string legend)
+        public void InputChart(float[] spline, float[] steps, string legend, Brush brush)
         {
             ChartValues<ObservablePoint> charts = new ChartValues<ObservablePoint>();
             for (int i = 0; i < spline.Length; i++)
@@ -19,6 +19,8 @@ namespace MathematicalPackage_Smoothing.Charts
             m_Line.Add(new LineSeries()
             {
                 Title = legend,
+                PointGeometrySize = 0,
+                Stroke = brush,
                 Values = charts,
                 Fill = Brushes.Transparent
             });
